@@ -1,13 +1,13 @@
 .profile__avatar {
-    grid-area: profile__avatar;
-    border-radius: 100%;
-    width: 120px;
-    height: 120px;
-    margin-right: 30px;
+	grid-area: profile__avatar;
+	border-radius: 100%;
+	width: 120px;
+	height: 120px;
+	margin-right: 30px;
 }
 
 @media screen and (max-width: 767px) {
 	.profile__avatar {
-        margin: auto;
-}
+		margin: auto;
+	}
 }

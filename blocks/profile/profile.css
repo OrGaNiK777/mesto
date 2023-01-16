@@ -1,16 +1,16 @@
 .profile {
-    display: flex;
-    justify-content: space-between;
-    margin: auto;
-    align-items: center;
-    margin-top: 36px;
-    max-width: 880px;
-    min-height: 120px;
+	display: flex;
+	justify-content: space-between;
+	margin: auto;
+	align-items: center;
+	margin-top: 36px;
+	max-width: 880px;
+	min-height: 120px;
 }
 
 @media screen and (max-width: 767px) {
 	.profile {
-        display: block;
-        max-width: 320px;
-}
+		display: block;
+		max-width: 320px;
+	}
 }

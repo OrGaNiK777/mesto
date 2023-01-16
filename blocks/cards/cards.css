@@ -1,15 +1,15 @@
 .cards {
-    display: flex;
-    flex-wrap: wrap;
-    margin: auto;
-    max-width: 880px;
-    margin-top: 51px;
+	display: flex;
+	flex-wrap: wrap;
+	margin: auto;
+	max-width: 880px;
+	margin-top: 51px;
 }
 
 @media screen and (max-width: 767px) {
 	.cards {
-        display: block;
-        max-width: 282px;
-        margin-top: 37px;
-}
+		display: block;
+		max-width: 282px;
+		margin-top: 37px;
+	}
 }

@@ -1,23 +1,22 @@
 .profile__edit-button {
-    padding: 0;
-    margin: 0;
-    grid-area: profile__edit-button;
-    background-color: black ;
-    width: 24px;
-    height: 24px;
-    border: 1px solid #FFFFFF;
-    margin-top: 35px;
-    margin-left: 9px;
-    background-image: url(/images/edit-button.svg);
-    background-size: cover;
+	padding: 0;
+	margin: 0;
+	grid-area: profile__edit-button;
+	background-color: black;
+	width: 24px;
+	height: 24px;
+	border: 1px solid #ffffff;
+	margin-top: 35px;
+	margin-left: 9px;
+	background-image: url(/images/edit-button.svg);
+	background-size: cover;
 }
 
 @media screen and (max-width: 767px) {
 	.profile__edit-button {
-        margin-left: 0;
-        width: 18px;
-        height: 18px;
-        margin-top: 30px;
-
-}
+		margin-left: 0;
+		width: 18px;
+		height: 18px;
+		margin-top: 30px;
+	}
 }

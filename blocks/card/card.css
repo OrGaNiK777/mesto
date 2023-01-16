@@ -1,32 +1,31 @@
 .card {
-    margin: 0;
-    background-color: white;
-    width: 282px;
-    height: 361px;
-    border-radius: 10px;
-    margin-right: 17px;
-    margin-bottom: 20px;
+	margin: 0;
+	background-color: white;
+	width: 282px;
+	height: 361px;
+	border-radius: 10px;
+	margin-right: 17px;
+	margin-bottom: 20px;
 }
 
 .card:nth-child(3n) {
-    margin-right: 0;
+	margin-right: 0;
 }
 
-.card:nth-child(n+4) {
-    margin-bottom: 0;
+.card:nth-child(n + 4) {
+	margin-bottom: 0;
 }
 
 @media screen and (max-width: 767px) {
-    .card {
-        margin-bottom: 20px;
-    }
+	.card {
+		margin-bottom: 20px;
+	}
 
-    .card:nth-child(n+4) {
-        margin-bottom: 20px;
-    }
-    
-    .card:nth-child(n+6) {
-        margin-bottom: 0px;
-    }
+	.card:nth-child(n + 4) {
+		margin-bottom: 20px;
+	}
 
+	.card:nth-child(n + 6) {
+		margin-bottom: 0px;
+	}
 }
