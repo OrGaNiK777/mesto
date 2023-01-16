@@ -1,0 +1,10 @@
+.profile__about {
+    grid-area: profile__about;
+    color: white;
+    margin: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 10px;
+}

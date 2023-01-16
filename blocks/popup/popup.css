@@ -1,0 +1,6 @@
+.popup {
+    /* margin: auto; */
+    background-color: black;
+    opacity: .5;
+    display: none;
+}
