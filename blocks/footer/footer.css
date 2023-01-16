@@ -1,7 +1,15 @@
 .footer {
     margin: auto;
-    margin-top: 67px;
+    margin-top: 69px;
     text-align: left;
     max-width: 880px;
     padding-bottom: 60px;
+}
+
+@media screen and (max-width: 767px) {
+	.footer {
+        max-width: 282px;
+        margin-top: 48px;
+
+}
 }
