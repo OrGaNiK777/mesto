@@ -1,2 +1,13 @@
 .card__icon-like {
+	background-image: url(/images/icon-like.svg);
+	width: 22px;
+	height: 19px;
+	border: none;
+	margin-top: 30px;
+}
+
+.card__icon-like:hover {
+	transition: 0.2s;
+	opacity: 0.7;
+    cursor: pointer;
 }
