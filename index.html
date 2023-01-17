@@ -1,86 +1,126 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mesto</title>
-    <link rel="stylesheet" href="./pages/index.css" />
-    <script src="script.js"></script>
-</head>
-<body>
-    <div class="page">
-        <header class="header">
-        <a href="#"><img class="header-logo" src="./images/header-logo.png" alt="Логотип Mesto"></a>
-        </header>
-        <main>
-            <section class="profile">
-                <div class="profile__info">
-                    <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватар">
-                    <h1 class="profile__name">Жак-Ив Кусто</h1>
-                    <p class="profile__about">Исследователь океана</p>
-                    <button class="profile__edit-button"></button>
-                </div>
-                <button class="profile__add-button"><img src="./images/add-button.png" alt=""></button>
-            </section>
-            <section class="popup">
-                <div class="popup__container">
-                    <h2 class="popup__title">Редактировать профиль</h2>
-                    <div class="popup__name">Жак-Ив Кусто</div>
-                    <div class="popup__about">Исследователь океана</div>
-                    <button class="popup__button-save">Сохранить</button>
-                    <button class="popup__button-close"></button>
-                </div>
-                
-            </section>
-            <section class="cards">
-                <div class="card">
-                    <img class="card__image" src="/images/Element1.jpg" alt="Element1">
-                    <div class="card__info">
-                        <h2 class="card__title">Карачаевск</h2>
-                        <button class="card__icon-like"></button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card__image" src="/images/Element2.jpg" alt="Element2">
-                    <div class="card__info">
-                        <h2 class="card__title">Карачаевск</h2>
-                        <button class="card__icon-like"></button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card__image" src="/images/Element3.png" alt="Element3">
-                    <div class="card__info">
-                        <h2 class="card__title">Карачаевск</h2>
-                        <button class="card__icon-like"></button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card__image" src="/images/Element4.png" alt="Element4">
-                    <div class="card__info">
-                        <h2 class="card__title">Карачаевск</h2>
-                        <button class="card__icon-like"></button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card__image" src="/images/Element5.png" alt="Element5">
-                    <div class="card__info">
-                        <h2 class="card__title">Карачаевск</h2>
-                        <button class="card__icon-like"></button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card__image" src="/images/Element6.png" alt="Element6">
-                    <div class="card__info">
-                        <h2 class="card__title">Карачаевск</h2>
-                        <button class="card__icon-like"></button>
-                    </div>
-                </div>
-            </section>
-        </main>
-        <footer class="footer">
-            <img class="footer__footer-logo" src="./images/footer.png" alt="Mesto Russia">
-        </footer>
-    </div>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Mesto</title>
+		<link rel="stylesheet" href="./pages/index.css" />
+	</head>
+	<body>
+		<div class="page">
+			<header class="header">
+				<a href="#"
+					><img
+						class="header-logo"
+						src="./images/header-logo.png"
+						alt="Логотип Mesto"
+				/></a>
+			</header>
+			<main>
+				<section class="profile">
+					<div class="profile__container">
+						<img
+							class="profile__avatar"
+							src="./images/avatar.jpg"
+							alt="Аватар"
+						/>
+                        <div class="profile__info">
+                            <h1 id="profile__name" class="profile__name">123</h1>
+                            <p id="profile__about" class="profile__about">321</p>
+                            <button class="profile__edit-button"></button>
+                        </div>
+					</div>
+					<button class="profile__add-button">
+						<img src="./images/add-button.png" alt="" />
+					</button>
+				</section>
+				<section class="popup">
+					<div class="popup__container">
+						<h2 class="popup__title">Редактировать профиль</h2>
+						<input type="text" placeholder="Имя" class="popup__name"></input>
+						<input type="text" placeholder="О нем" class="popup__about"></input>
+						<button class="popup__button-save">Сохранить</button>
+						<button class="popup__button-close"></button>
+					</div>
+				</section>
+				<section class="cards">
+					<div class="card">
+						<img
+							class="card__image"
+							src="/images/Element1.jpg"
+							alt="Element1"
+						/>
+						<div class="card__info">
+							<h2 class="card__title">Карачаевск</h2>
+							<button class="card__icon-like"></button>
+						</div>
+					</div>
+					<div class="card">
+						<img
+							class="card__image"
+							src="/images/Element2.jpg"
+							alt="Element2"
+						/>
+						<div class="card__info">
+							<h2 class="card__title">Карачаевск</h2>
+							<button class="card__icon-like"></button>
+						</div>
+					</div>
+					<div class="card">
+						<img
+							class="card__image"
+							src="/images/Element3.png"
+							alt="Element3"
+						/>
+						<div class="card__info">
+							<h2 class="card__title">Карачаевск</h2>
+							<button class="card__icon-like"></button>
+						</div>
+					</div>
+					<div class="card">
+						<img
+							class="card__image"
+							src="/images/Element4.png"
+							alt="Element4"
+						/>
+						<div class="card__info">
+							<h2 class="card__title">Карачаевск</h2>
+							<button class="card__icon-like"></button>
+						</div>
+					</div>
+					<div class="card">
+						<img
+							class="card__image"
+							src="/images/Element5.png"
+							alt="Element5"
+						/>
+						<div class="card__info">
+							<h2 class="card__title">Карачаевск</h2>
+							<button class="card__icon-like"></button>
+						</div>
+					</div>
+					<div class="card">
+						<img
+							class="card__image"
+							src="/images/Element6.png"
+							alt="Element6"
+						/>
+						<div class="card__info">
+							<h2 class="card__title">Карачаевск</h2>
+							<button class="card__icon-like"></button>
+						</div>
+					</div>
+				</section>
+			</main>
+			<footer class="footer">
+				<img
+					class="footer__footer-logo"
+					src="./images/footer.png"
+					alt="Mesto Russia"
+				/>
+			</footer>
+		</div>
+        <script src="script.js"></script>
+	</body>
 </html>
