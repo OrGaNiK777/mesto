@@ -4,8 +4,8 @@
     width: 335px;
     
 	grid-template-areas:
-		"profile__avatar profile__name profile__edit-button"
-		"profile__avatar profile__about profile__edit-button";
+		"profile__name profile__edit-button"
+		"profile__about profile__edit-button";
 }
 
 @media screen and (max-width: 767px) {

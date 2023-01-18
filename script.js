@@ -18,15 +18,20 @@ function popupClose() {
 	popup.classList.remove("popup__opened");
 }
 
+function popupSave() {
+	popup.classList.remove("popup__opened");
+	profileName.textContent = (`${popupName.value}`)
+	profileAbout.textContent = (`${popupAbout.value}`)
+
+}
+
 profileEditButton.addEventListener("click", popupOpened);
 popupButtonClose.addEventListener("click", popupClose);
-// popupButtonSave.addEventListener("click", popupClose);
+popupButtonSave.addEventListener("click", popupSave);
 
 function handleFormSubmit(evt) {
 	evt.preventDefault();
 }
-	profileName.textContent = (`${popupName}`)
-	profileAbout.textContent = (`${123}`)
 
 
 
