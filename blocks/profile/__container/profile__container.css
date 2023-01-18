@@ -1,7 +1,6 @@
 .profile__container {
 	display: grid;
-	grid-template-areas:
-		"profile__avatar profile__info";
+	grid-template-areas: "profile__avatar profile__info";
 	max-width: 500px;
 }
 

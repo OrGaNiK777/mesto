@@ -7,7 +7,6 @@ let popupAbout = document.querySelector(".popup__about");
 let profileName = document.querySelector(".profile__name");
 let profileAbout = document.querySelector(".profile__about");
 
-
 function popupOpened() {
 	popup.classList.add("popup__opened");
 	popupName.value = profileName.textContent;
@@ -20,9 +19,8 @@ function popupClose() {
 
 function popupSave() {
 	popup.classList.remove("popup__opened");
-	profileName.textContent = (`${popupName.value}`)
-	profileAbout.textContent = (`${popupAbout.value}`)
-
+	profileName.textContent = `${popupName.value}`;
+	profileAbout.textContent = `${popupAbout.value}`;
 }
 
 profileEditButton.addEventListener("click", popupOpened);
@@ -33,6 +31,4 @@ function handleFormSubmit(evt) {
 	evt.preventDefault();
 }
 
-
-
-popup.addEventListener('submit', handleFormSubmit); 
+popup.addEventListener("submit", handleFormSubmit);

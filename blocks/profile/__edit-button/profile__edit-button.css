@@ -18,7 +18,7 @@
 }
 
 .profile__edit-button:active {
-	background-color: #535353
+	background-color: #535353;
 }
 
 @media screen and (max-width: 767px) {
