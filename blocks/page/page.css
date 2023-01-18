@@ -8,8 +8,15 @@
 	margin: 0;
 	padding: 0;
 	background-color: #000000;
-	min-width: 1280px;
+	width: 100%;
 }
+
+@media screen and (max-width: 1023px) {
+	.page {
+		max-width: 1023px;
+	}
+}
+
 @media screen and (max-width: 719px) {
 	.cards {
 		max-width: 720px;

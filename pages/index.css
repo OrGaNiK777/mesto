@@ -3,9 +3,9 @@
 @import url(../vendor/fonts/inter.css);
 
 @import url(../blocks/header/header.css);
-@import url(../blocks/header/header-logo/header-logo.css);
+@import url(../blocks/header/__logo/header__logo.css);
+
 @import url(../blocks/cards/cards.css);
-@import url(../blocks/header/header-line/header-line.css);
 
 @import url(../blocks/card/card.css);
 @import url(../blocks/card/__title/card__title.css);
@@ -20,7 +20,6 @@
 @import url(../blocks/popup/__about/popup__about.css);
 @import url(../blocks/popup/__button-save/popup__button-save.css);
 @import url(../blocks/popup/__name/popup__name.css);
-@import url(../blocks/popup/__line/popup_line.css);
 @import url(../blocks/popup/__button-close/popup__button-close.css);
 @import url(../blocks/popup/__title/popup__title.css);
 

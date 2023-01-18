@@ -16,6 +16,16 @@
 	margin-bottom: 0;
 }
 
+@media screen and (max-width: 1023px) {
+	.card:nth-child(3n) {
+		margin-right: 17px;
+	}
+
+	.card:nth-child(even) {
+		margin-right: 0;
+	}
+}
+
 @media screen and (max-width: 767px) {
 	.card {
 		margin-bottom: 20px;
@@ -23,9 +33,5 @@
 
 	.card:nth-child(n + 4) {
 		margin-bottom: 20px;
-	}
-
-	.card:nth-child(n + 6) {
-		margin-bottom: 0px;
 	}
 }

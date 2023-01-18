@@ -1,9 +1,0 @@
-.header-line {
-	max-width: 800px;
-}
-
-@media screen and (max-width: 767px) {
-	.header-line {
-		max-width: 320px;
-	}
-}
