@@ -3,7 +3,7 @@
 	height: 32px;
 	background-color: rgba(0, 0, 0, 0);
 	border: none;
-	background-image: url(/images/close-icon.png);
+	background-image: url(../../../images/close-icon.png);
 	position: relative;
 	left: 102%;
 	bottom: 101%;
