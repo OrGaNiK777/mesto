@@ -21,10 +21,10 @@ const closePopup = () => {
 
 const inputPopup = () => {
 	//Редактирование, сохранение и закрытие попап
-	event.preventDefault();
 	closePopup();
 	profileName.textContent = `${popupName.value}`;
 	profileAbout.textContent = `${popupAbout.value}`;
+	event.preventDefault();
 };
 
 profileEditButton.addEventListener("click", openedPopup);
