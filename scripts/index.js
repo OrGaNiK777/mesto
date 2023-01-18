@@ -1,6 +1,6 @@
 let popup = document.querySelector(".popup");
+let inputPopupInfo = document.getElementById("inputPopupInfo");
 let profileEditButton = document.querySelector(".profile__edit-button");
-// let popupButtonSave = document.querySelector(".popup__button-save");
 let popupButtonClose = document.querySelector(".popup__button-close");
 let popupName = document.getElementById("popupName");
 let popupAbout = document.getElementById("popupAbout");
@@ -19,16 +19,14 @@ const closePopup = () => {
 	popup.classList.remove("popup_opened");
 };
 
-const savePopup = () => {
-	popup.classList.remove("popup_opened");
+const inputPopup = () => {
+	//Редактирование, сохранение и закрытие попап
+	event.preventDefault();
+	closePopup();
 	profileName.textContent = `${popupName.value}`;
 	profileAbout.textContent = `${popupAbout.value}`;
 };
 
 profileEditButton.addEventListener("click", openedPopup);
 popupButtonClose.addEventListener("click", closePopup);
-popupButtonSave.addEventListener("click", savePopup);
-
-function handleFormSubmit(evt) {
-	evt.preventDefault();
-}
+inputPopupInfo.addEventListener("submit", inputPopup);
