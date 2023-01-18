@@ -7,17 +7,17 @@ let popupAbout = document.querySelector(".popup__about");
 let profileName = document.querySelector(".profile__name");
 let profileAbout = document.querySelector(".profile__about");
 
-function popupOpened() {
+const popupOpened=() =>{
 	popup.classList.add("popup__opened");
 	popupName.value = profileName.textContent;
 	popupAbout.value = profileAbout.textContent;
 }
 
-function popupClose() {
+const popupClose=() =>{
 	popup.classList.remove("popup__opened");
 }
 
-function popupSave() {
+const popupSave=() =>{
 	popup.classList.remove("popup__opened");
 	profileName.textContent = `${popupName.value}`;
 	profileAbout.textContent = `${popupAbout.value}`;
