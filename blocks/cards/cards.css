@@ -3,13 +3,12 @@
 	flex-wrap: wrap;
 	margin: auto;
 	max-width: 880px;
-	margin-top: 51px;
+	margin-top: 50px;
 }
 
 @media screen and (max-width: 1023px) {
 	.cards {
 		max-width: 581px;
-		margin-top: 51px;
 	}
 }
 
@@ -17,6 +16,6 @@
 	.cards {
 		display: block;
 		max-width: 282px;
-		margin-top: 37px;
+		margin-top: 33px;
 	}
 }

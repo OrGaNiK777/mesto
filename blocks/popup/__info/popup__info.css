@@ -1,4 +1,5 @@
-.popup__name {
+.popup__info {
+	padding: 0;
 	min-width: 358px;
 	font-style: normal;
 	font-weight: 400;
@@ -6,18 +7,18 @@
 	line-height: 17px;
 	border: none;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-	padding-bottom: 10px;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
-	margin-bottom: 30px;
 	margin-left: 36px;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	margin-bottom: 30px;
 }
 
 @media screen and (max-width: 767px) {
-	.popup__name {
+	.popup__info {
 		min-width: 238px;
 		margin-left: 22px;
-		margin-bottom: 30px;
 	}
 }

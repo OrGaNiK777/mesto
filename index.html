@@ -13,7 +13,7 @@
 				<a href="#"
 					><img
 						class="header__logo"
-						src="./images/header-logo.png"
+						src="./images/header-logo.svg"
 						alt="Логотип Mesto"
 				/></a>
 			</header>
@@ -26,108 +26,138 @@
 							alt="Аватар"
 						/>
 						<div class="profile__info">
-							<h1 class="profile__name">Жак-Ив Кусто</h1>
-							<p class="profile__about">Исследователь океана</p>
-							<button class="profile__edit-button"></button>
+							<h1 class="profile__name">Персидская</h1>
+							<p class="profile__about">А где моська</p>
+							<button
+								class="profile__edit-button"
+								type="submit"
+							></button>
 						</div>
 					</div>
-					<button class="profile__add-button">
-						<img
-							src="./images/add-button.png"
-							alt="Кнопка добавить"
-						/>
-					</button>
-				</section>
-				<section class="popup">
-					<div class="popup__container">
-						<h2 class="popup__title">Редактировать профиль</h2>
-						<form>
-							<input class="popup__name" type="text" />
-							<input class="popup__about" type="text" />
-							<button class="popup__button-save" type="submit">
-								Сохранить
-							</button>
-						</form>
-						<button class="popup__button-close"></button>
-					</div>
+					<button
+						class="profile__add-button"
+						type="submit"
+						aria-label="Кнопка добавить"
+					></button>
 				</section>
 				<section class="cards">
-					<div class="card">
+					<article class="card">
 						<img
 							class="card__image"
-							src="./images/Element1.jpg"
-							alt="фото1"
+							src="./images/kitty.jpg"
+							alt="Котенок в цветах"
 						/>
 						<div class="card__info">
-							<h2 class="card__title">Карачаевск</h2>
-							<button class="card__icon-like"></button>
+							<h2 class="card__title">Котейка</h2>
+							<button
+								class="card__icon-like"
+								type="submit"
+							></button>
 						</div>
-					</div>
-					<div class="card">
+					</article>
+					<article class="card">
 						<img
 							class="card__image"
-							src="./images/Element2.jpg"
-							alt="фото2"
+							src="./images/british.jpg"
+							alt="Британец"
 						/>
 						<div class="card__info">
-							<h2 class="card__title">Карачаевск</h2>
-							<button class="card__icon-like"></button>
+							<h2 class="card__title">Британец</h2>
+							<button
+								class="card__icon-like"
+								type="submit"
+							></button>
 						</div>
-					</div>
-					<div class="card">
+					</article>
+					<article class="card">
 						<img
 							class="card__image"
-							src="./images/Element3.png"
-							alt="фото3"
+							src="./images/siberian.jpg"
+							alt="Сибирская"
 						/>
 						<div class="card__info">
-							<h2 class="card__title">Карачаевск</h2>
-							<button class="card__icon-like"></button>
+							<h2 class="card__title">Фибирфкая</h2>
+							<button
+								class="card__icon-like"
+								type="submit"
+							></button>
 						</div>
-					</div>
-					<div class="card">
+					</article>
+					<article class="card">
 						<img
 							class="card__image"
-							src="./images/Element4.png"
-							alt="фото4"
+							src="./images/sNovoyGodoy.jpg"
+							alt="Кошка у елки"
 						/>
 						<div class="card__info">
-							<h2 class="card__title">Карачаевск</h2>
-							<button class="card__icon-like"></button>
+							<h2 class="card__title">С новой годой!</h2>
+							<button
+								class="card__icon-like"
+								type="submit"
+							></button>
 						</div>
-					</div>
-					<div class="card">
+					</article>
+					<article class="card">
 						<img
 							class="card__image"
-							src="./images/Element5.png"
-							alt="фото5"
+							src="./images/yummy.jpg"
+							alt="Кошка нюхает цветок"
 						/>
 						<div class="card__info">
-							<h2 class="card__title">Карачаевск</h2>
-							<button class="card__icon-like"></button>
+							<h2 class="card__title">Вкусняха</h2>
+							<button
+								class="card__icon-like"
+								type="submit"
+							></button>
 						</div>
-					</div>
-					<div class="card">
+					</article>
+					<article class="card">
 						<img
 							class="card__image"
-							src="./images/Element6.png"
-							alt="фото6"
+							src="./images/yawn.jpg"
+							alt="Кошка зевает"
 						/>
 						<div class="card__info">
-							<h2 class="card__title">Карачаевск</h2>
-							<button class="card__icon-like"></button>
+							<h2 class="card__title">Зевун</h2>
+							<button
+								class="card__icon-like"
+								type="submit"
+							></button>
 						</div>
-					</div>
+					</article>
 				</section>
 			</main>
 			<footer class="footer">
-				<img
-					class="footer__footer-logo"
-					src="./images/footer.png"
-					alt="Логотив Место Россия"
-				/>
+				<h3 class="footer__footer-copyright">© 2023 Mesto Russia</h3>
 			</footer>
+			<div class="popup">
+				<div class="popup__container">
+					<h2 class="popup__title">Редактировать профиль</h2>
+					<form name="inputPopupInfo">
+						<input
+							class="popup__info"
+							id="popupName"
+							name="inputPopupName"
+							type="text"
+							required
+							placeholder="Имя"
+						/>
+						<input
+							class="popup__info"
+							id="popupAbout"
+							name="inputPopupAbout"
+							type="text"
+							required
+							placeholder="Описание"
+						/>
+						<button class="popup__button-save" type="submit">
+							Сохранить
+						</button>
+					</form>
+					<button class="popup__button-close" type="submit"></button>
+				</div>
+			</div>
 		</div>
-		<script src="/scripts/index.js"></script>
+		<script src="./scripts/index.js"></script>
 	</body>
 </html>
