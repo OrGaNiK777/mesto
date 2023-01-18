@@ -1,5 +1,5 @@
 .popup__about {
-	max-width: 358px;
+	min-width: 358px;
 	font-style: normal;
 	font-weight: 400;
 	font-size: 14px;
@@ -15,7 +15,7 @@
 
 @media screen and (max-width: 767px) {
 	.popup__about {
-		max-width: 238px;
+		min-width: 238px;
 		margin-left: 22px;
 		padding-bottom: 10px;
 	}
