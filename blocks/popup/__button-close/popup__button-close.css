@@ -5,8 +5,8 @@
 	border: none;
 	background-image: url(../../../images/close-icon.svg);
 	position: relative;
-	left: 436px;
-	bottom: 339px;
+	left: 437px;
+	bottom: 338px;
 }
 
 .popup__button-close:hover {
@@ -20,7 +20,7 @@
 		width: 20px;
 		height: 20px;
 		background-size: cover;
-		left: 260px;
-		bottom: 335px;
+		left: 262px;
+		bottom: 338px;
 	}
 }
