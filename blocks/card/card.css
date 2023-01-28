@@ -11,10 +11,6 @@
 	margin-right: 0;
 }
 
-.card:nth-child(n + 4) {
-	margin-bottom: 0;
-}
-
 @media screen and (max-width: 1023px) {
 	.card:nth-child(3n) {
 		margin-right: 17px;
@@ -24,13 +20,5 @@
 		margin-right: 0;
 	}
 
-	.card:nth-child(n + 4) {
-		margin-bottom: 20px;
-	}
 }
 
-@media screen and (max-width: 767px) {
-	.card:nth-child(n + 4) {
-		margin-bottom: 20px;
-	}
-}

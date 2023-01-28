@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="./pages/index.css" />
 	</head>
 	<body>
+		<script src="./scripts/index.js" defer></script>
 		<div class="page">
 			<header class="header">
 				<a href="#"
@@ -41,7 +42,11 @@
 					></button>
 				</section>
 				<section class="cards">
-					<article class="card">
+					<!-- <article class="card">
+						<button
+							class="card__icon-delete"
+							type="button"
+						></button>
 						<img
 							class="card__image"
 							src="./images/kitty.jpg"
@@ -50,12 +55,17 @@
 						<div class="card__info">
 							<h2 class="card__title">Котейка</h2>
 							<button
+								id="like"
 								class="card__icon-like"
 								type="button"
 							></button>
 						</div>
 					</article>
 					<article class="card">
+						<button
+							class="card__icon-delete"
+							type="button"
+						></button>
 						<img
 							class="card__image"
 							src="./images/british.jpg"
@@ -64,12 +74,17 @@
 						<div class="card__info">
 							<h2 class="card__title">Британец</h2>
 							<button
+							id="like"
 								class="card__icon-like"
 								type="button"
 							></button>
 						</div>
 					</article>
 					<article class="card">
+						<button
+							class="card__icon-delete"
+							type="button"
+						></button>
 						<img
 							class="card__image"
 							src="./images/siberian.jpg"
@@ -84,6 +99,10 @@
 						</div>
 					</article>
 					<article class="card">
+						<button
+							class="card__icon-delete"
+							type="button"
+						></button>
 						<img
 							class="card__image"
 							src="./images/sNovoyGodoy.jpg"
@@ -98,6 +117,10 @@
 						</div>
 					</article>
 					<article class="card">
+						<button
+							class="card__icon-delete"
+							type="button"
+						></button>
 						<img
 							class="card__image"
 							src="./images/yummy.jpg"
@@ -112,6 +135,10 @@
 						</div>
 					</article>
 					<article class="card">
+						<button
+							class="card__icon-delete"
+							type="button"
+						></button>
 						<img
 							class="card__image"
 							src="./images/yawn.jpg"
@@ -124,40 +151,88 @@
 								type="button"
 							></button>
 						</div>
-					</article>
+					</article> -->
 				</section>
 			</main>
 			<footer class="footer">
 				<h3 class="footer__footer-copyright">© 2023 Mesto Russia</h3>
 			</footer>
-			<div class="popup">
-				<div class="popup__container">
-					<h2 class="popup__title">Редактировать профиль</h2>
-					<form name="inputPopupInfo" id="inputPopupInfo">
-						<input
-							class="popup__info"
-							id="popupName"
-							name="inputPopupName"
-							type="text"
-							required
-							placeholder="Имя"
-						/>
-						<input
-							class="popup__info"
-							id="popupAbout"
-							name="inputPopupAbout"
-							type="text"
-							required
-							placeholder="Описание"
-						/>
-						<button class="popup__button-save" type="submit">
-							Сохранить
-						</button>
-					</form>
-					<button class="popup__button-close" type="button"></button>
+			<div>
+				<div class="popup popup-profile">
+					<div class="popup__container">
+						<h2 class="popup__title">Редактировать профиль</h2>
+						<form name="inputPopupProfile" id="inputPopupProfile">
+							<input
+								class="popup__info"
+								id="popupProfileName"
+								name="inputPopupName"
+								type="text"
+								required
+								placeholder="Имя"
+							/>
+							<input
+								class="popup__info"
+								id="popupProfileAbout"
+								name="inputPopupAbout"
+								type="text"
+								required
+								placeholder="Описание"
+							/>
+							<button class="popup__button-save" type="submit">
+								Сохранить
+							</button>
+						</form>
+						<button
+							id="buttonClosePopupEditProfile"
+							class="popup__button-close"
+							type="button"
+						></button>
+					</div>
+				</div>
+				<div class="popup popup-add">
+					<div class="popup__container">
+						<h2 class="popup__title">Новое место</h2>
+						<form name="inputPopupNewCard" id="inputPopupNewCard">
+							<input
+								class="popup__info"
+								id="popupTitle"
+								name="inputPopupTitle"
+								type="text"
+								placeholder="Название"
+							/>
+							<input
+								class="popup__info"
+								id="popupLink"
+								name="inputPopupLink"
+								type="text"
+								placeholder="Ссылка на страницу"
+							/>
+							<button
+								id="createCardButton"
+								class="popup__button-save"
+								type="submit"
+							>
+								Создать
+							</button>
+						</form>
+						<button
+							id="buttonClosePopupAddCard"
+							class="popup__button-close"
+							type="button"
+						></button>
+					</div>
 				</div>
 			</div>
 		</div>
-		<script src="./scripts/index.js"></script>
+		<template id="AddNewCard-template">
+			<article class="card">
+				<button class="card__icon-delete" type="button"></button>
+				<img class="card__image" src="_" alt="" />
+				<div class="card__info">
+					<h2 class="card__title"></h2>
+					<button class="card__icon-like" type="button"></button>
+				</div>
+			</article>
+		</template>
 	</body>
 </html>
