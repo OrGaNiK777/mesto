@@ -81,13 +81,17 @@ const initialCards = [
   }
 ]; 
 
+function cardAdd() {
+	initialCards.forEach((item) =>
+	let addCardTemplate = document.querySelector("#AddNewCard-template").content;
+	const addCardElement = addCardTemplate.querySelector(".card").cloneNode(true);
+
+
+)}
+
 function addCard(titleValue, linkValue) {
-	const addCardTemplate = document.querySelector(
-		"#AddNewCard-template"
-	).content;
-	const addCardElement = addCardTemplate
-		.querySelector(".card")
-		.cloneNode(true);
+	const addCardTemplate = document.querySelector("#AddNewCard-template").content;
+	const addCardElement = addCardTemplate.querySelector(".card").cloneNode(true);
 
 	addCardElement.querySelector(".card__title").textContent = titleValue;
 	addCardElement.querySelector(".card__image").textContent = linkValue;
