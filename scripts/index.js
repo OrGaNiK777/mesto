@@ -16,6 +16,7 @@ let profileName = document.querySelector(".profile__name");
 let profileAbout = document.querySelector(".profile__about");
 let createCardButton = document.getElementById("createCardButton"); //кнопка создать - попап добавить карточку
 let cards = document.querySelector(".cards");
+const addCardTemplate = document.querySelector("#AddNewCard-template").content;
 
 const openedPopupProfile = () => {
 	//открытие попап редактирования профиля
@@ -50,67 +51,79 @@ const closePopupAddCard = () => {
 const inputPopupAddCard = () => {
 	//Добавка и закрытие попап добавления карточки
 	closePopupAddCard();
-	addCard();
 	event.preventDefault();
 };
 
 const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-]; 
+	{
+		name: "Архыз12",
+		link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
+	},
+	{
+		name: "Челябинская область",
+		link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
+	},
+	{
+		name: "Иваново",
+		link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
+	},
+	{
+		name: "Камчатка",
+		link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
+	},
+	{
+		name: "Холмогорский район",
+		link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
+	},
+	{
+		name: "Байкал",
+		link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
+	},
+];
 
-function cardAdd() {
-	initialCards.forEach((item) =>
-	let addCardTemplate = document.querySelector("#AddNewCard-template").content;
-	const addCardElement = addCardTemplate.querySelector(".card").cloneNode(true);
-
-
-)}
-
-function addCard(titleValue, linkValue) {
-	const addCardTemplate = document.querySelector("#AddNewCard-template").content;
-	const addCardElement = addCardTemplate.querySelector(".card").cloneNode(true);
-
-	addCardElement.querySelector(".card__title").textContent = titleValue;
-	addCardElement.querySelector(".card__image").textContent = linkValue;
-
-	addCardElement
-		.querySelector(".card__icon-like")
-		.addEventListener("click", function (evt) {
-			evt.target.classList.toggle("card__icon-like_active");
-		});
-
-	cards.prepend(addCardElement);
+function addCardBD() {
+	initialCards.forEach((item) => {
+		const card = addCardTemplate.querySelector(".card").cloneNode(true);
+		card.querySelector(".card__image").src = item.link;
+		card.querySelector(".card__image").alt = item.name;
+		card.querySelector(".card__title").textContent = item.name;
+		cards.append(card);
+		card.querySelector(".card__icon-like").addEventListener(
+			"click",
+			(evt) => {
+				evt.target.classList.toggle("card__icon-like_active");
+			}
+		);
+		card.querySelector(".card__icon-delete").addEventListener(
+			"click",
+			() => {
+				card.remove();
+			}
+		);
+	});
 }
+addCardBD();
 
-createCardButton.addEventListener("click", function () {
+createCardButton.addEventListener("click", () => {
+	const card = addCardTemplate.querySelector(".card").cloneNode(true);
 	const title = document.getElementById("popupTitle");
-	const link = document.getElementsById("popupLink");
+	const link = document.getElementById("popupLink");
 
-	addCard(title.value, link.value);
+	card.querySelector(".card__title").textContent = title.value;
+	card.querySelector(".card__image").src = link.value;
+	card.querySelector(".card__image").alt = title.value;
+
+	card.querySelector(".card__icon-like").addEventListener("click", (evt) => {
+		evt.target.classList.toggle("card__icon-like_active");
+	});
+	card.querySelector(".card__icon-delete").addEventListener("click", () => {
+		card.remove();
+	});
+
+	cards.prepend(card);
 });
+
+fullScreenImg.addEventListener("click", () => {});
 
 profileEditButton.addEventListener("click", openedPopupProfile);
 buttonClosePopupEditProfile.addEventListener("click", closePopupEditProfile);

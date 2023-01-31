@@ -2,4 +2,10 @@
 	width: 282px;
 	height: 282px;
 	border-radius: 10px 10px 0 0;
+	cursor: zoom-in;
+	transition: 0.2s;
+}
+
+.card__image:hover {
+	opacity: 0.9;
 }
