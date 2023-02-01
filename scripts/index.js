@@ -93,11 +93,11 @@ function removeCard(e) {
 	document.querySelector(".card").remove();
 }
 
-function fullImg(valueLink, valutName) {
+function fullImg(valueLink, valueName) {
 	//отправка атрибутов картинки
 	popupImg.querySelector(".popup-img__img").src = valueLink;
-	popupImg.querySelector(".popup-img__img").alt = valutName;
-	popupImg.querySelector(".popup-img__title").textContent = valutName;
+	popupImg.querySelector(".popup-img__img").alt = valueName;
+	popupImg.querySelector(".popup-img__title").textContent = valueName;
 }
 
 const inputPopupAddCard = () => {
@@ -109,10 +109,8 @@ const inputPopupAddCard = () => {
 	card.querySelector(".card__title").textContent = title.value;
 	card.querySelector(".card__image").src = link.value;
 	card.querySelector(".card__image").alt = title.value;
-
 	card.querySelector(".card__icon-like").addEventListener("click", activeLike);
 	card.querySelector(".card__icon-delete").addEventListener("click", removeCard);
-
 	card.querySelector(".card__image").addEventListener("click", () => {
 		openPopupImg();
 		fullImg(link.value, title.value);
