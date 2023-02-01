@@ -1,9 +1,10 @@
 .popup-img__container {
-    position: fixed;
-    top: 90px;
-    left: ;
-
-
-
-    
+    max-width: 75vw;
+    max-height: 75vw;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
 }
