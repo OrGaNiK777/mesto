@@ -42,116 +42,7 @@
 					></button>
 				</section>
 				<section class="cards">
-					<!-- <article class="card">
-						<button
-							class="card__icon-delete"
-							type="button"
-						></button>
-						<img
-							class="card__image"
-							src="./images/kitty.jpg"
-							alt="Котенок в цветах"
-						/>
-						<div class="card__info">
-							<h2 class="card__title">Котейка</h2>
-							<button
-								id="like"
-								class="card__icon-like"
-								type="button"
-							></button>
-						</div>
-					</article> -->
-					<!-- <article class="card">
-						<button
-							class="card__icon-delete"
-							type="button"
-						></button>
-						<img
-							class="card__image"
-							src="./images/british.jpg"
-							alt="Британец"
-						/>
-						<div class="card__info">
-							<h2 class="card__title">Британец</h2>
-							<button
-							id="like"
-								class="card__icon-like"
-								type="button"
-							></button>
-						</div>
-					</article>
-					<article class="card">
-						<button
-							class="card__icon-delete"
-							type="button"
-						></button>
-						<img
-							class="card__image"
-							src="./images/siberian.jpg"
-							alt="Сибирская"
-						/>
-						<div class="card__info">
-							<h2 class="card__title">Фибирфкая</h2>
-							<button
-								class="card__icon-like"
-								type="button"
-							></button>
-						</div>
-					</article>
-					<article class="card">
-						<button
-							class="card__icon-delete"
-							type="button"
-						></button>
-						<img
-							class="card__image"
-							src="./images/sNovoyGodoy.jpg"
-							alt="Кошка у елки"
-						/>
-						<div class="card__info">
-							<h2 class="card__title">С новой годой!</h2>
-							<button
-								class="card__icon-like"
-								type="button"
-							></button>
-						</div>
-					</article>
-					<article class="card">
-						<button
-							class="card__icon-delete"
-							type="button"
-						></button>
-						<img
-							class="card__image"
-							src="./images/yummy.jpg"
-							alt="Кошка нюхает цветок"
-						/>
-						<div class="card__info">
-							<h2 class="card__title">Вкусняха</h2>
-							<button
-								class="card__icon-like"
-								type="button"
-							></button>
-						</div>
-					</article>
-					<article class="card">
-						<button
-							class="card__icon-delete"
-							type="button"
-						></button>
-						<img
-							class="card__image"
-							src="./images/yawn.jpg"
-							alt="Кошка зевает"
-						/>
-						<div class="card__info">
-							<h2 class="card__title">Зевун</h2>
-							<button
-								class="card__icon-like"
-								type="button"
-							></button>
-						</div>
-					</article> -->
+
 				</section>
 			</main>
 			<footer class="footer">
@@ -198,17 +89,18 @@
 								id="popupTitle"
 								name="inputPopupTitle"
 								type="text"
+								required
 								placeholder="Название"
 							/>
 							<input
 								class="popup__info"
 								id="popupLink"
 								name="inputPopupLink"
-								type="text"
+								type="url"
 								placeholder="Ссылка на страницу"
+								required
 							/>
 							<button
-								id="createCardButton"
 								class="popup__button-save"
 								type="submit"
 							>
@@ -223,14 +115,14 @@
 					</div>
 				</div>
 				<div class="popup popup-img">
-					<div class="popup-full-img">					
+					<div class="popup-img__container">					
 						<button
 							id="buttonClosePopupImg"
-							class="popup__button-close"
+							class="popup-img__button-close"
 							type="button"
 						></button>
-						<img class="popup-full-img__img" src="" alt="">
-						<h2 class="popup-full-img__title"></h2>
+						<img class="popup-img__img" src="" alt="">
+						<h2 class="popup-img__title"></h2>
 					</div>
 				</div>
 			</div>
@@ -238,7 +130,7 @@
 		<template id="AddNewCard-template">
 			<article class="card">
 				<button class="card__icon-delete" type="button"></button>
-				<img class="card__image" src="_" alt="_" type="button"/>
+				<img class="card__image" src="_" alt="_"/>
 				<div class="card__info">
 					<h2 class="card__title"></h2>
 					<button class="card__icon-like" type="button"></button>
