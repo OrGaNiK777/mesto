@@ -35,11 +35,11 @@
 					<div class="popup__container">
 						<h2 class="popup__title">Редактировать профиль</h2>
 						<form name="inputPopupProfile" id="inputPopupProfile">
+							<button id="buttonClosePopupEditProfile" class="popup__button-close" type="button"></button>
 							<input class="popup__info" id="popupProfileName" name="inputPopupName" type="text" required placeholder="Имя" />
 							<input class="popup__info" id="popupProfileAbout" name="inputPopupAbout" type="text" required placeholder="Описание" />
 							<button class="popup__button-save" type="submit">Сохранить</button>
 						</form>
-						<button id="buttonClosePopupEditProfile" class="popup__button-close" type="button"></button>
 					</div>
 				</div>
 				<div class="popup popup-add">
@@ -49,13 +49,13 @@
 							<input class="popup__info" id="popupTitle" name="inputPopupTitle" type="text" placeholder="Название" required />
 							<input class="popup__info" id="popupLink" name="inputPopupLink" type="url" placeholder="Ссылка на страницу" required />
 							<button class="popup__button-save" type="submit">Создать</button>
+							<button id="buttonClosePopupAddCard" class="popup__button-close" type="button"></button>
 						</form>
-						<button id="buttonClosePopupAddCard" class="popup__button-close" type="button"></button>
 					</div>
 				</div>
 				<div class="popup popup-img">
 					<div class="popup-img__container">
-						<button id="buttonClosePopupImg" class="popup-img__button-close" type="button"></button>
+						<button id="buttonClosePopupImg" class="popup__button-close" type="button"></button>
 						<img class="popup-img__img" src="_" alt="_" />
 						<h2 class="popup-img__title"></h2>
 					</div>
@@ -65,7 +65,7 @@
 		<template id="AddNewCard-template">
 			<article class="card">
 				<button class="card__icon-delete" type="button"></button>
-				<img id="fullImg" class="card__image" src="_" alt="_" />
+				<img class="card__image" src="_" alt="_" />
 				<div class="card__info">
 					<h2 class="card__title"></h2>
 					<button class="card__icon-like" type="button"></button>

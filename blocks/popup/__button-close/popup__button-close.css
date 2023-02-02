@@ -4,9 +4,10 @@
 	background-color: rgba(0, 0, 0, 0);
 	border: none;
 	background-image: url(../../../images/close-icon.svg);
-	position: relative;
-	left: 437px;
-	bottom: 338px;
+	position: absolute;
+	background-size: cover;
+	top: -41px;
+	right: -38px;
 }
 
 .popup__button-close:hover {
@@ -19,8 +20,7 @@
 	.popup__button-close {
 		width: 20px;
 		height: 20px;
-		background-size: cover;
-		left: 262px;
-		bottom: 338px;
+		top: -35px;
+		right: 1px;
 	}
 }
