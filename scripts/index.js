@@ -1,27 +1,28 @@
+const addCardTemplate = document.querySelector("#AddNewCard-template").content;
+const card = addCardTemplate.querySelector(".card");
+const cards = document.querySelector(".cards");
+
+const closeButtons = document.querySelectorAll(".popup__button-close"); // находим все крестики проекта по универсальному селектору
+
 const popupProfile = document.querySelector(".popup-profile");
-const popupAddCard = document.querySelector(".popup-add");
-const popupImg = document.querySelector(".popup-img");
-const inputPopupProfile = document.querySelector("#inputPopupProfile");
-const inputPopupNewCard = document.querySelector("#inputPopupNewCard");
-const buttonClosePopupEditProfile = document.querySelector("#buttonClosePopupEditProfile"); //кнопка закрыть попап редактирования профиля
-const buttonClosePopupAddCard = document.querySelector("#buttonClosePopupAddCard"); //кнопка закрыть попап добавления карточки
-const profileEditButton = document.querySelector(".profile__edit-button"); //кнопка изменить профиль
-const profileAddButton = document.querySelector(".profile__add-button"); //кнопка добавить карточку
 const popupProfileName = document.querySelector("#popupProfileName"); //имя - попап изменить профиль
 const popupProfileAbout = document.querySelector("#popupProfileAbout"); //о - попап изменить профиль
+const inputPopupProfile = document.querySelector("#inputPopupProfile");
+
 const profileName = document.querySelector(".profile__name");
 const profileAbout = document.querySelector(".profile__about");
-const cards = document.querySelector(".cards");
-const addCardTemplate = document.querySelector("#AddNewCard-template").content.querySelector(".card");
+const profileEditButton = document.querySelector(".profile__edit-button"); //кнопка изменить профиль
+const profileAddButton = document.querySelector(".profile__add-button"); //кнопка добавить карточку
+
+const popupAddCard = document.querySelector(".popup-add");
+const inputPopupTitle = popupAddCard.querySelector("#inputPopupTitle");
+const inputPopupLink = popupAddCard.querySelector("#inputPopupLink");
+const inputPopupNewCard = document.querySelector("#inputPopupNewCard");
+
+const popupImg = document.querySelector(".popup-img");
 const popupImgImg = popupImg.querySelector(".popup-img__img");
 const popupImgTitle = popupImg.querySelector(".popup-img__title");
 const popupButtonClose = popupImg.querySelector(".popup__button-close");
-const cardTitle = addCardTemplate.querySelector(".card__title");
-const cardImage = addCardTemplate.querySelector(".card__image");
-const cardIconLike = addCardTemplate.querySelector(".card__icon-like");
-const cardIconDelete = addCardTemplate.querySelector(".card__icon-delete");
-const title = document.querySelector("#popupTitle");
-const link = document.querySelector("#popupLink");
 
 const initialCards = [
 	{
@@ -50,26 +51,40 @@ const initialCards = [
 	},
 ];
 
-function openPopup(value) {
-	value.classList.add("popup_opened");
+function openPopup(event) {
+	//добавка класса popup_opened
+	event.classList.add("popup_opened");
 }
 
-function closePopup(value) {
-	value.classList.remove("popup_opened");
+function closePopup(event) {
+	//удаление класса popup_opened
+	event.classList.remove("popup_opened");
 }
 
-function toggleLike(evt) {
-	// активирование лайка
-	evt.target.classList.toggle("card__icon-like_active");
+function toggleLike(event) {
+	// tag лайка
+	event.target.classList.toggle("card__icon-like_active");
+}
+
+function removeCard(event) {
+	//удаление карты
+	event.target.closest(".card").remove();
 }
 
 function fillImagePopup(valueLink, valueName) {
 	//отправка атрибутов картинки
-	openPopupImg();
+	openPopup(popupImg);
 	popupImgImg.src = valueLink;
 	popupImgImg.alt = valueName;
 	popupImgTitle.textContent = valueName;
 }
+
+closeButtons.forEach((button) => {
+	// находим 1 раз ближайший к крестику попап
+	const popup = button.closest(".popup");
+	// устанавливаем обработчик закрытия на крестик СПАСИБО
+	button.addEventListener("click", () => closePopup(popup));
+});
 
 profileEditButton.addEventListener("click", () => {
 	//открытие попап редактирования профиля
@@ -78,20 +93,12 @@ profileEditButton.addEventListener("click", () => {
 	popupProfileAbout.value = profileAbout.textContent;
 });
 
-buttonClosePopupEditProfile.addEventListener("click", () => {
-	//закрытие попап редактирования профиля
-	closePopup(popupProfile);
-});
-
-inputPopupProfile.addEventListener("submit", () => {
+inputPopupProfile.addEventListener("submit", (event) => {
 	//Редактирование, сохранение и закрытие попап редактирования профиля
+	event.preventDefault();
 	closePopup(popupProfile);
 	profileName.textContent = `${popupProfileName.value}`;
 	profileAbout.textContent = `${popupProfileAbout.value}`;
-});
-
-inputPopupProfile.addEventListener("submit", (event) => {
-	event.preventDefault();
 });
 
 profileAddButton.addEventListener("click", () => {
@@ -99,63 +106,44 @@ profileAddButton.addEventListener("click", () => {
 	openPopup(popupAddCard);
 });
 
-buttonClosePopupAddCard.addEventListener("click", () => {
-	//закрытие попап добавления карточки
-	closePopup(popupAddCard);
-});
-
-function openPopupImg() {
-	// открытие попап картинки
-	openPopup(popupImg);
-}
-function closePopupImg() {
-	// закрытие попап картинки
-	closePopup(popupImg);
-}
-// function removeCard() {
-// 	evt.target.closest('.card').remove()
-// }
 
 function createCard(item) {
-	// тут создаете карточку и возвращаете ее
-
+	//создние карточки и ее возврат
 	const card = addCardTemplate.cloneNode(true);
-
+	const cardTitle = card.querySelector(".card__title");
+	const cardImage = card.querySelector(".card__image");
+	const cardIconLike = card.querySelector(".card__icon-like");
+	const cardIconDelete = card.querySelector(".card__icon-delete");
 	cardTitle.textContent = item.name;
 	cardImage.src = item.link;
 	cardImage.alt = item.name;
 
 	cardIconLike.addEventListener("click", toggleLike);
-	cardIconDelete.addEventListener("click", () => {
-		card.remove();
-	});
-	card.querySelector(".card__image").addEventListener("click", () => {
+	cardIconDelete.addEventListener("click", removeCard);
+	cardImage.addEventListener("click", () => {
 		fillImagePopup(item.link, item.name);
-		popupButtonClose.addEventListener("click", closePopupImg);
 	});
 
-	cards.prepend(card);
-	closePopup(popupAddCard);
 	return card;
 }
 
-inputPopupNewCard.addEventListener("submit", (event) => {
-	event.preventDefault();
-});
-
 initialCards.forEach((item) => {
+	//выгрузка карт из БД
 	const card = createCard(item);
 	cards.append(card);
 });
 
-inputPopupNewCard.addEventListener("submit", () => {
+inputPopupNewCard.addEventListener("submit", (event) => {
+	//добавка новой карты
+	event.preventDefault();
 	const item = {
-		name: title.value,
-		alt: title.value,
-		link: link.value,
+		name: inputPopupTitle.value,
+		alt: inputPopupTitle.value,
+		link: inputPopupLink.value,
 	};
-	title.value = "";
-	link.value = "";
-	const element = createCard(item);
-	item.prepend(element);
+	inputPopupTitle.value = "";
+	inputPopupLink.value = "";
+	const card = createCard(item);
+	cards.prepend(card); //по поводу очистки формы с помощью .reset() не понял что то
+	closePopup(popupAddCard);
 });
