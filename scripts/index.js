@@ -82,7 +82,7 @@ function fillImagePopup(valueLink, valueName) {
 closeButtons.forEach((button) => {
 	// находим 1 раз ближайший к крестику попап
 	const popup = button.closest(".popup");
-	// устанавливаем обработчик закрытия на крестик СПАСИБО
+	// устанавливаем обработчик закрытия на крестик
 	button.addEventListener("click", () => closePopup(popup));
 });
 
@@ -105,7 +105,6 @@ profileAddButton.addEventListener("click", () => {
 	//открытие попап добавления карточки
 	openPopup(popupAddCard);
 });
-
 
 function createCard(item) {
 	//создние карточки и ее возврат
@@ -141,9 +140,8 @@ inputPopupNewCard.addEventListener("submit", (event) => {
 		alt: inputPopupTitle.value,
 		link: inputPopupLink.value,
 	};
-	inputPopupTitle.value = "";
-	inputPopupLink.value = "";
 	const card = createCard(item);
-	cards.prepend(card); //по поводу очистки формы с помощью .reset() не понял что то
+	cards.prepend(card);
+	event.target.reset();
 	closePopup(popupAddCard);
 });
