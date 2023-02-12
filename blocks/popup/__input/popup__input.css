@@ -1,4 +1,5 @@
-.popup__info {
+.popup__input {
+	display: flex;
 	padding: 0;
 	min-width: 358px;
 	font-style: normal;
@@ -11,13 +12,14 @@
 	white-space: nowrap;
 	overflow: hidden;
 	margin-left: 36px;
-	padding-bottom: 5px;
-	padding-top: 5px;
-	margin-bottom: 30px;
+	padding-bottom: 8px;
+}
+.popup__input:focus {
+	outline: none;
 }
 
 @media screen and (max-width: 767px) {
-	.popup__info {
+	.popup__input {
 		min-width: 238px;
 		margin-left: 22px;
 	}
