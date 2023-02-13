@@ -43,7 +43,7 @@
 								<span class="popup__input-error popupProfileName-error">Вы пропустили это поле</span>
 								<input class="popup__input" id="popupProfileAbout" name="popup__input" type="text" placeholder="Описание" required maxlength="200" minlength="2" />
 								<span class="popup__input-error popupProfileAbout-error">Вы пропустили это поле</span>
-								<button class="popup__button-save" id="EditProfileButton" type="submit">Сохранить</button>
+								<button class="popup__button-save popup__button-save_inactive" id="EditProfileButton" type="submit">Сохранить</button>
 							</fieldset>
 						</form>
 					</div>
@@ -53,11 +53,11 @@
 						<h2 class="popup__title">Новое место</h2>
 						<form class="popup__form" name="inputPopupNewCard" id="inputPopupNewCard" novalidate>
 							<fieldset class="popup__input-container">
-								<input class="popup__input" id="inputPopupTitle" name="popup__input" type="text" placeholder="Название"  required maxlength="30" minlength="2" />
+								<input class="popup__input" id="inputPopupTitle" name="popup__input" type="text" placeholder="Название" required maxlength="30" minlength="2" />
 								<span class="popup__input-error inputPopupTitle-error">Вы пропустили это поле</span>
 								<input class="popup__input" id="inputPopupLink" name="popup__input" type="url" placeholder="Ссылка на страницу" required />
 								<span class="popup__input-error inputPopupLink-error">Введите адрес сайта</span>
-								<button class="popup__button-save" id="addCardButton" type="submit">Создать</button>
+								<button class="popup__button-save popup__button-save_inactive" id="addCardButton" type="submit">Создать</button>
 								<button class="popup__button-close" type="button"></button>
 							</fieldset>
 						</form>

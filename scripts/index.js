@@ -3,7 +3,6 @@ const card = addCardTemplate.querySelector(".card");
 const cards = document.querySelector(".cards");
 
 const closeButtons = document.querySelectorAll(".popup__button-close"); // находим все крестики проекта по универсальному селектору
-//const closeButton = document.querySelector(".popup__button-close");
 const popupProfile = document.querySelector(".popup-profile");
 const popupProfileName = document.querySelector("#popupProfileName"); //имя - попап изменить профиль
 const popupProfileAbout = document.querySelector("#popupProfileAbout"); //о - попап изменить профиль
@@ -27,7 +26,17 @@ const popupImgTitle = popupImg.querySelector(".popup-img__title");
 function openPopup(event) {
 	//добавка класса popup_opened
 	event.classList.add("popup_opened");
+	document.addEventListener("keydown", closeEsc);
+	event.addEventListener("mousedown", closeClick);
 }
+
+function closePopup(event) {
+	//удаление класса popup_opened
+	event.classList.remove("popup_opened");
+	document.removeEventListener("keydown", closeEsc);
+	event.removeEventListener("mousedown", closeClick);
+}
+
 closeButtons.forEach((button) => {
 	// находим 1 раз ближайший к крестику попап
 	const popup = button.closest(".popup");
@@ -35,10 +44,20 @@ closeButtons.forEach((button) => {
 	button.addEventListener("click", () => closePopup(popup));
 });
 
-function closePopup(event) {
-	//удаление класса popup_opened
-	event.classList.remove("popup_opened");
-}
+const closeClick = (event) => {
+	//закрывает модальное окно при клике вне контента окна
+	if (event.target === event.currentTarget) {
+		closePopup(event.currentTarget);
+	}
+};
+
+const closeEsc = (event) => {
+	//закрывает модальное окно при нажатии Esc
+	if (event.keyCode == 27) {
+		const popupOpened = document.querySelector(".popup_opened");
+		closePopup(popupOpened);
+	}
+};
 
 function toggleLike(event) {
 	// tag лайка
@@ -106,7 +125,6 @@ initialCards.forEach((item) => {
 
 inputPopupNewCard.addEventListener("submit", (event) => {
 	//добавка новой карты
-
 	event.preventDefault();
 	const item = {
 		name: inputPopupTitle.value,
@@ -115,11 +133,10 @@ inputPopupNewCard.addEventListener("submit", (event) => {
 	};
 	const card = createCard(item);
 	cards.prepend(card);
-	//event.target.reset();
 	closePopup(popupAddCard);
 });
 
-enableValidation({
+enableValid({
 	formSelector: ".popup__form",
 	inputSelector: ".popup__input",
 	submitButtonSelector: ".popup__button-save",
