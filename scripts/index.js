@@ -2,8 +2,8 @@ const addCardTemplate = document.querySelector("#AddNewCard-template").content;
 const card = addCardTemplate.querySelector(".card");
 const cards = document.querySelector(".cards");
 
-//const closeButtons = document.querySelectorAll(".popup__button-close"); // находим все крестики проекта по универсальному селектору
-const closeButton = document.querySelector(".popup__button-close");
+const closeButtons = document.querySelectorAll(".popup__button-close"); // находим все крестики проекта по универсальному селектору
+//const closeButton = document.querySelector(".popup__button-close");
 const popupProfile = document.querySelector(".popup-profile");
 const popupProfileName = document.querySelector("#popupProfileName"); //имя - попап изменить профиль
 const popupProfileAbout = document.querySelector("#popupProfileAbout"); //о - попап изменить профиль
@@ -27,37 +27,15 @@ const popupImgTitle = popupImg.querySelector(".popup-img__title");
 function openPopup(event) {
 	//добавка класса popup_opened
 	event.classList.add("popup_opened");
-	console.log(event)
-	attachModalEvents(event);
 }
-// closeButtons.forEach((button) => {
-// 	// находим 1 раз ближайший к крестику попап
-// 	const popup = button.closest(".popup");
-// 	// устанавливаем обработчик закрытия на крестик
-// 	button.addEventListener("click", () => closePopup(popup));
-// });
-
-/*
- * Функция назначает обработчики событий к элементам модального окна при открытии
- */
-function attachModalEvents(event) {
-	closeButton.addEventListener("click", () => closePopup(event));
-	// закрывать модальное окно при нажатии клавиши Escape
-	document.addEventListener("keydown", (event) => {
-		if (event.key === "Escape") {
-			closePopup(event);
-		}
-	});
-
-	// закрывать модальное окно при клике вне контента модального окна
-	//modal.addEventListener("click", handleOutside);
-}
-
-//Функция закрывает модальное окно при нажатии клавиши Escape
-// function handleEscape(event)
+closeButtons.forEach((button) => {
+	// находим 1 раз ближайший к крестику попап
+	const popup = button.closest(".popup");
+	// устанавливаем обработчик закрытия на крестик
+	button.addEventListener("click", () => closePopup(popup));
+});
 
 function closePopup(event) {
-	console.log(event)
 	//удаление класса popup_opened
 	event.classList.remove("popup_opened");
 }
