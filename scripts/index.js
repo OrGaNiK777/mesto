@@ -22,6 +22,7 @@ const submitAddCard = document.querySelector("#submitAddCard");
 
 const popupImg = document.querySelector(".popup-img");
 const popupImgImg = popupImg.querySelector(".popup-img__img");
+
 const popupImgTitle = popupImg.querySelector(".popup-img__title");
 
 function openPopup(popup) {
