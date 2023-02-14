@@ -29,18 +29,11 @@ const checkValid = (settings, formElement, inputElement) => {
 	}
 };
 
-const hasInvalid = (inputList) => {
-	// проходим по этому массиву методом some
-	return inputList.some((input) => {
-		return !input.validity.valid;
-	});
-};
-
 const setEventListeners = (settings, formElement) => {
 	const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
 	const buttonElement = formElement.querySelector(settings.submitButtonSelector);
-	// чтобы проверить состояние кнопки в самом начале
-	// toggleButtonState(settings, inputList, buttonElement);
+	//чтобы проверить состояние кнопки в самом начале
+	toggleButtonState(settings, inputList, buttonElement);
 
 	inputList.forEach((inputElement) => {
 		inputElement.addEventListener("input", function () {
@@ -50,37 +43,22 @@ const setEventListeners = (settings, formElement) => {
 		});
 	});
 };
-const disableButton = (settings, buttonElement) => {
-	buttonElement.setAttribute("disabled", true);
-	buttonElement.classList.add(settings.inactiveButtonClass);
+const hasInvalid = (inputList) => {
+	// проходим по этому массиву методом some
+	return inputList.some((input) => {
+		return !input.validity.valid;
+	});
 };
-
-const enableButton = (settings, buttonElement) => {
-	buttonElement.removeAttribute("disabled");
-	buttonElement.classList.remove(settings.inactiveButtonClass);
-};
-
-// const toggleButtonState = (settings, inputList, buttonElement) => {
-// 	// Если есть хотя бы один невалидный инпут
-// 	if (hasInvalid(inputList)) {
-// 		// сделай кнопку неактивной
-// 		buttonElement.setAttribute("disabled", true);
-// 		buttonElement.classList.add(settings.inactiveButtonClass);
-// 	} else {
-// 		// иначе сделай кнопку активной
-// 		buttonElement.removeAttribute("disabled");
-// 		buttonElement.classList.remove(settings.inactiveButtonClass);
-// 	}
-// };
-
 const toggleButtonState = (settings, inputList, buttonElement) => {
 	// Если есть хотя бы один невалидный инпут
 	if (hasInvalid(inputList)) {
 		// сделай кнопку неактивной
-		disableButton(settings, buttonElement);
+		buttonElement.setAttribute("disabled", true);
+		buttonElement.classList.add(settings.inactiveButtonClass);
 	} else {
 		// иначе сделай кнопку активной
-		enableButton(settings, buttonElement);
+		buttonElement.removeAttribute("disabled");
+		buttonElement.classList.remove(settings.inactiveButtonClass);
 	}
 };
 

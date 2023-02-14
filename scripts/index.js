@@ -18,6 +18,7 @@ const popupInputTitle = popupAddCard.querySelector("#popupInputTitle");
 const popupInputLink = popupAddCard.querySelector("#popupInputLink");
 const popupNewCardForm = document.querySelector("#popupNewCardForm");
 const popupButtonSave = document.querySelector(".popup__button-save");
+const submitAddCard = document.querySelector("#submitAddCard");
 
 const popupImg = document.querySelector(".popup-img");
 const popupImgImg = popupImg.querySelector(".popup-img__img");
@@ -122,6 +123,14 @@ initialCards.forEach((item) => {
 	const card = createCard(item);
 	cards.append(card);
 });
+// const btnEnabled = (evt) => {
+// 	evt.classList.remove("popup__button-save_inactive");
+// 	evt.removeAttribute("disabled");
+// };
+const btnDisabled = (evt) => {
+	evt.classList.add("popup__button-save_inactive");
+	evt.setAttribute("disabled", "");
+};
 
 popupNewCardForm.addEventListener("submit", (event) => {
 	//добавка новой карты
@@ -135,7 +144,7 @@ popupNewCardForm.addEventListener("submit", (event) => {
 	cards.prepend(card);
 	event.target.reset();
 	closePopup(popupAddCard);
-	disableButton(popupButtonSave);
+	btnDisabled(submitAddCard); //единственное, что я смог придумать.=(
 });
 
 enableValid({
@@ -146,5 +155,3 @@ enableValid({
 	inputErrorClass: "popup__input-error_active",
 	errorClass: "popup__input_disabled",
 });
-
-
