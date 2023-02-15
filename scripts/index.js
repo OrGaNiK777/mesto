@@ -124,13 +124,15 @@ initialCards.forEach((item) => {
 	const card = createCard(item);
 	cards.append(card);
 });
-// const btnEnabled = (evt) => {
-// 	evt.classList.remove("popup__button-save_inactive");
-// 	evt.removeAttribute("disabled");
+
+// const btnEnabled = (button) => {
+// 	button.classList.remove("popup__button-save_inactive");
+// 	button.removeAttribute("disabled");
 // };
-const btnDisabled = (evt) => {
-	evt.classList.add("popup__button-save_inactive");
-	evt.setAttribute("disabled", "");
+
+const btnDisabled = (button) => {
+	button.classList.add("popup__button-save_inactive");
+	button.setAttribute("disabled", "");
 };
 
 popupNewCardForm.addEventListener("submit", (event) => {
@@ -145,7 +147,7 @@ popupNewCardForm.addEventListener("submit", (event) => {
 	cards.prepend(card);
 	event.target.reset();
 	closePopup(popupAddCard);
-	btnDisabled(submitAddCard); //единственное, что я смог придумать.=(
+	btnDisabled(submitAddCard);
 });
 
 enableValid({
