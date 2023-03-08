@@ -1,3 +1,4 @@
+import {initialCards} from "../constans/initial_cards.js";
 const сardTemplate = document.querySelector("#AddNewCard-template").content;
 const card = сardTemplate.querySelector(".card");
 const cards = document.querySelector(".cards");
@@ -150,11 +151,11 @@ popupNewCardForm.addEventListener("submit", (event) => {
 	btnDisabled(submitAddCard);
 });
 
-enableValid({
-	formSelector: ".popup__form",
-	inputSelector: ".popup__input",
-	submitButtonSelector: ".popup__button-save",
-	inactiveButtonClass: "popup__button-save_inactive",
-	inputErrorClass: "popup__input-error_active",
-	errorClass: "popup__input_disabled",
-});
+// enableValid({
+// 	formSelector: ".popup__form",
+// 	inputSelector: ".popup__input",
+// 	submitButtonSelector: ".popup__button-save",
+// 	inactiveButtonClass: "popup__button-save_inactive",
+// 	inputErrorClass: "popup__input-error_active",
+// 	errorClass: "popup__input_disabled",
+// });
