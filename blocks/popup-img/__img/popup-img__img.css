@@ -1,18 +1,18 @@
 .popup-img__img {
-	max-width: 87vh;
-	max-height: 64vh;
+	max-width: 75vw;
+	max-height: 75vw;
 }
 
 @media screen and (max-width: 1023px) {
 	.popup-img__img {
-		max-width:55vh;
-		max-height: 55vh;
+		max-width: 55vw;
+		max-height: 55vw;
 	}
 }
 
 @media screen and (max-width: 767px) {
 	.popup-img__img {
-		max-height: 32vh;
-		max-width: 28vh;
+		max-height: 35vw;
+		max-width: 35vw;
 	}
 }

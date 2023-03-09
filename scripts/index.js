@@ -2,6 +2,7 @@ import { initialCards } from "../constans/initial_cards.js";
 import Card from "../scripts/Card.js";
 import FormValidator from "./FormValidator.js";
 import { validSettings } from "../constans/validSettings.js";
+import { btnDisabled } from "./FormValidator.js";
 
 // const сardTemplate = document.querySelector("#AddNewCard-template").content.querySelector(".card");
 // const card = сardTemplate.querySelector(".card");
@@ -29,41 +30,42 @@ const popupImgImg = popupImg.querySelector(".popup-img__img");
 
 const popupImgTitle = popupImg.querySelector(".popup-img__title");
 
+//const cardClass = new Card();  изучить!
+
 function openPopup(popup) {
 	//добавка класса popup_opened
 	popup.classList.add("popup_opened");
-	document.addEventListener("keydown", closeEsc);
-	popup.addEventListener("mousedown", closeClick);
+	document.addEventListener("keydown", closeByEsc);
 }
 
 function closePopup(popup) {
 	//удаление класса popup_opened
 	popup.classList.remove("popup_opened");
-	document.removeEventListener("keydown", closeEsc);
-	popup.removeEventListener("mousedown", closeClick);
+	document.removeEventListener("keydown", closeByEsc);
 }
 
-buttonsClose.forEach((button) => {
-	// находим 1 раз ближайший к крестику попап
-	const popup = button.closest(".popup");
-	// устанавливаем обработчик закрытия на крестик
-	button.addEventListener("click", () => closePopup(popup));
-});
-
-const closeClick = (event) => {
+const closeOutside = (event) => {
 	//закрывает модальное окно при клике вне контента окна
 	if (event.target === event.currentTarget) {
 		closePopup(event.currentTarget);
 	}
 };
 
-const closeEsc = (event) => {
+const closeByEsc = (event) => {
 	//закрывает модальное окно при нажатии Esc
 	if (event.key === "Escape") {
 		const popupOpened = document.querySelector(".popup_opened");
 		closePopup(popupOpened);
 	}
 };
+
+buttonsClose.forEach((button) => {
+	// находим 1 раз ближайший к крестику попап
+	const popup = button.closest(".popup");
+	// устанавливаем обработчик закрытия на крестик
+	popup.addEventListener("mousedown", closeOutside);
+	button.addEventListener("click", () => closePopup(popup));
+});
 
 profileEditButton.addEventListener("click", () => {
 	//открытие попап редактирования профиля
@@ -95,18 +97,12 @@ export function fillImagePopup(valueLink, valueName) {
 
 initialCards.forEach((item) => {
 	//выгрузка карт из БД
-	const cardClass = new Card();
+
 	const card = cardClass.createCard(item);
 	cards.append(card);
 });
 
-const btnDisabled = (button) => {
-	button.classList.add("popup__button-save_inactive");
-	button.setAttribute("disabled", "");
-};
-
 popupNewCardForm.addEventListener("submit", (event) => {
-	const cardClass = new Card();
 	//добавка новой карты
 	event.preventDefault();
 	const item = {

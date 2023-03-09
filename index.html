@@ -35,14 +35,12 @@
 					<div class="popup__container">
 						<h2 class="popup__title">Редактировать профиль</h2>
 						<form class="popup__form" name="form" id="popupProfileForm" novalidate>
-							<fieldset class="popup__input-container">
-								<button id="buttonClosePopupEditProfile" class="popup__button-close" type="button"></button>
-								<input class="popup__input" id="popupProfileName" name="popup__input" type="text" placeholder="Имя" required maxlength="20" minlength="2" />
-								<span class="popup__input-error popupProfileName-error">Вы пропустили это поле</span>
-								<input class="popup__input" id="popupProfileAbout" name="popup__input" type="text" placeholder="Описание" required maxlength="200" minlength="2" />
-								<span class="popup__input-error popupProfileAbout-error">Вы пропустили это поле</span>
-								<button class="popup__button-save popup__button-save_inactive" id="submitEditProfife" type="submit" disabled>Сохранить</button>
-							</fieldset>
+							<button id="buttonClosePopupEditProfile" class="popup__button-close" type="button"></button>
+							<input class="popup__input" id="popupProfileName" name="popup__input" type="text" placeholder="Имя" required maxlength="40" minlength="2" />
+							<span class="popup__input-error popupProfileName-error">Вы пропустили это поле</span>
+							<input class="popup__input" id="popupProfileAbout" name="popup__input" type="text" placeholder="Описание" required maxlength="200" minlength="2" />
+							<span class="popup__input-error popupProfileAbout-error">Вы пропустили это поле</span>
+							<button class="popup__button-save popup__button-save_inactive" id="submitEditProfife" type="submit" disabled>Сохранить</button>
 						</form>
 					</div>
 				</div>
@@ -50,14 +48,12 @@
 					<div class="popup__container">
 						<h2 class="popup__title">Новое место</h2>
 						<form class="popup__form" name="form" id="popupNewCardForm" novalidate>
-							<fieldset class="popup__input-container">
-								<input class="popup__input" id="popupInputTitle" name="popup__input" type="text" placeholder="Название" required maxlength="30" minlength="2" />
-								<span class="popup__input-error popupInputTitle-error">Вы пропустили это поле</span>
-								<input class="popup__input" id="popupInputLink" name="popup__input" type="url" placeholder="Ссылка на страницу" required />
-								<span class="popup__input-error popupInputLink-error">Введите адрес сайта</span>
-								<button class="popup__button-save popup__button-save_inactive" id="submitAddCard" type="submit" disabled>Создать</button>
-								<button class="popup__button-close" type="button"></button>
-							</fieldset>
+							<input class="popup__input" id="popupInputTitle" name="popup__input" type="text" placeholder="Название" required maxlength="30" minlength="2" />
+							<span class="popup__input-error popupInputTitle-error">Вы пропустили это поле</span>
+							<input class="popup__input" id="popupInputLink" name="popup__input" type="url" placeholder="Ссылка на страницу" required />
+							<span class="popup__input-error popupInputLink-error">Введите адрес сайта</span>
+							<button class="popup__button-save popup__button-save_inactive" id="submitAddCard" type="submit" disabled>Создать</button>
+							<button class="popup__button-close" type="button"></button>
 						</form>
 					</div>
 				</div>

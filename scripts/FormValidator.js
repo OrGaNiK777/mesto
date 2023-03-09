@@ -67,6 +67,7 @@ export default class FormValidator {
 			buttonElement.removeAttribute("disabled");
 			buttonElement.classList.remove(this._validSettings.inactiveButtonClass);
 		}
+		buttonElement.setAttribute.reset;
 	}
 
 	enableValid() {
@@ -79,3 +80,8 @@ export default class FormValidator {
 		});
 	}
 }
+
+export const btnDisabled = (button) => {     //так пойдет или надо именно в классе?)
+	button.classList.add("popup__button-save_inactive");
+	button.setAttribute("disabled", "");
+};
