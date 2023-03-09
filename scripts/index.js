@@ -1,6 +1,7 @@
-import {initialCards} from "../constans/initial_cards.js";
-const сardTemplate = document.querySelector("#AddNewCard-template").content;
-const card = сardTemplate.querySelector(".card");
+import { initialCards } from "../constans/initial_cards.js";
+import Card from "../scripts/Card.js";
+const сardTemplate = document.querySelector("#AddNewCard-template").content.querySelector(".card");
+// const card = сardTemplate.querySelector(".card");
 const cards = document.querySelector(".cards");
 
 const buttonsClose = document.querySelectorAll(".popup__button-close"); // находим все крестики проекта по универсальному селектору
@@ -62,23 +63,23 @@ const closeEsc = (event) => {
 	}
 };
 
-function toggleLike(event) {
-	// tag лайка
-	event.target.classList.toggle("card__icon-like_active");
-}
+// function toggleLike(event) {
+// 	// tag лайка
+// 	event.target.classList.toggle("card__icon-like_active");
+// }
 
-function removeCard(event) {
-	//удаление карты
-	event.target.closest(".card").remove();
-}
+// function removeCard(event) {
+// 	//удаление карты
+// 	event.target.closest(".card").remove();
+// }
 
-function fillImagePopup(valueLink, valueName) {
-	//отправка атрибутов картинки
-	openPopup(popupImg);
-	popupImgImg.src = valueLink;
-	popupImgImg.alt = valueName;
-	popupImgTitle.textContent = valueName;
-}
+// function fillImagePopup(valueLink, valueName) {
+// 	//отправка атрибутов картинки
+// 	openPopup(popupImg);
+// 	popupImgImg.src = valueLink;
+// 	popupImgImg.alt = valueName;
+// 	popupImgTitle.textContent = valueName;
+// }
 
 profileEditButton.addEventListener("click", () => {
 	//открытие попап редактирования профиля
@@ -100,29 +101,32 @@ profileAddButton.addEventListener("click", () => {
 	openPopup(popupAddCard);
 });
 
-function createCard(item) {
-	//создние карточки и ее возврат
-	const card = сardTemplate.cloneNode(true);
-	const cardTitle = card.querySelector(".card__title");
-	const cardImage = card.querySelector(".card__image");
-	const cardIconLike = card.querySelector(".card__icon-like");
-	const cardIconDelete = card.querySelector(".card__icon-delete");
-	cardTitle.textContent = item.name;
-	cardImage.src = item.link;
-	cardImage.alt = item.name;
 
-	cardIconLike.addEventListener("click", toggleLike);
-	cardIconDelete.addEventListener("click", removeCard);
-	cardImage.addEventListener("click", () => {
-		fillImagePopup(item.link, item.name);
-	});
 
-	return card;
-}
+// function createCard(item) {
+// 	//создние карточки и ее возврат
+// 	const card = сardTemplate.cloneNode(true);
+// 	const cardTitle = card.querySelector(".card__title");
+// 	const cardImage = card.querySelector(".card__image");
+// 	const cardIconLike = card.querySelector(".card__icon-like");
+// 	const cardIconDelete = card.querySelector(".card__icon-delete");
+// 	cardTitle.textContent = item.name;
+// 	cardImage.src = item.link;
+// 	cardImage.alt = item.name;
+
+// 	cardIconLike.addEventListener("click", toggleLike);
+// 	cardIconDelete.addEventListener("click", removeCard);
+// 	cardImage.addEventListener("click", () => {
+// 		fillImagePopup(item.link, item.name);
+// 	});
+
+// 	return card;
+// }
 
 initialCards.forEach((item) => {
+	const cardClass = new Card();
 	//выгрузка карт из БД
-	const card = createCard(item);
+	const card = cardClass.createCard(item);
 	cards.append(card);
 });
 
@@ -137,6 +141,7 @@ const btnDisabled = (button) => {
 };
 
 popupNewCardForm.addEventListener("submit", (event) => {
+	const cardClass = new Card();
 	//добавка новой карты
 	event.preventDefault();
 	const item = {
@@ -144,7 +149,7 @@ popupNewCardForm.addEventListener("submit", (event) => {
 		alt: popupInputTitle.value,
 		link: popupInputLink.value,
 	};
-	const card = createCard(item);
+	const card = cardClass.createCard(item);
 	cards.prepend(card);
 	event.target.reset();
 	closePopup(popupAddCard);
