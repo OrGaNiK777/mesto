@@ -115,7 +115,7 @@ popupNewCardForm.addEventListener("submit", (event) => {
 	btnDisabled(submitAddCard);
 });
 
-const profileFormValid = new FormValidator(validSettings);
+const profileFormValid = new FormValidator(validSettings, popupProfileForm);
 profileFormValid.enableValid();
-const cardFormValid = new FormValidator(validSettings);
+const cardFormValid = new FormValidator(validSettings, popupNewCardForm);
 cardFormValid.enableValid();

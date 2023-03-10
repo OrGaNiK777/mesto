@@ -28,19 +28,23 @@ export default class Card {
 	}
 
 	_setEventListeners() {
-		this._card.querySelector(".card__icon-like").addEventListener("click", () => {
+		this._cardImage = this._card.querySelector(".card__image");
+		this._likeButton = this._card.querySelector(".card__icon-like");
+		this._deleteButton = this._card.querySelector(".card__icon-delete");
+
+		this._likeButton.addEventListener("click", () => {
 			this._toggleLike();
 		});
-		this._card.querySelector(".card__icon-delete").addEventListener("click", () => {
+		this._deleteButton.addEventListener("click", () => {
 			this._removeCard();
 		});
-		this._card.querySelector(".card__image").addEventListener("click", () => {
+		this._cardImage.addEventListener("click", () => {
 			fillImagePopup(this._link, this._name);
 		});
 	}
 	_toggleLike() {
 		// tag лайка
-		this._card.querySelector(".card__icon-like").classList.toggle("card__icon-like_active");
+		this._likeButton.classList.toggle("card__icon-like_active");
 	}
 
 	_removeCard() {
