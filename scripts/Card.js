@@ -1,40 +1,51 @@
 import { fillImagePopup } from "./index.js";
 
 export default class Card {
-	static _сardTemplate = document.querySelector("#AddNewCard-template").content;
-
-	constructor() {
-		this._toggleLike = this._toggleLike.bind(this);
-		this._removeCard = this._removeCard.bind(this);
+	constructor(item, templateSelector) {
+		this._name = item.name;
+		this._link = item.link;
+		this._templateSelector = templateSelector;
 	}
 
-	createCard(item) {
+	_getTemplate() {
+		const сardTemplate = document.querySelector(this._templateSelector).content.querySelector(".card").cloneNode(true);
+		return сardTemplate;
+	}
+
+	generateCard() {
 		//создние карточки и ее возврат
-		this._card = Card._сardTemplate.querySelector(".card").cloneNode(true);
+		this._card = this._getTemplate();
 		const cardTitle = this._card.querySelector(".card__title");
 		const cardImage = this._card.querySelector(".card__image");
-		const cardIconLike = this._card.querySelector(".card__icon-like");
-		const cardIconDelete = this._card.querySelector(".card__icon-delete");
 
-		cardIconLike.addEventListener("click", this._toggleLike);
-		cardIconDelete.addEventListener("click", this._removeCard);
-		cardImage.addEventListener("click", () => {
-			fillImagePopup(item.link, item.name);
-		});
+		this._setEventListeners();
 
-		cardTitle.textContent = item.name;
-		cardImage.src = item.link;
-		cardImage.alt = item.name;
+		cardTitle.textContent = this._name;
+		cardImage.src = this._link;
+		cardImage.alt = this._name;
 
 		return this._card;
 	}
-	_toggleLike(event) {
+
+	_setEventListeners() {
+		this._card.querySelector(".card__icon-like").addEventListener("click", () => {
+			this._toggleLike();
+		});
+		this._card.querySelector(".card__icon-delete").addEventListener("click", () => {
+			this._removeCard();
+		});
+		this._card.querySelector(".card__image").addEventListener("click", () => {
+			fillImagePopup(this._link, this._name);
+		});
+	}
+	_toggleLike() {
 		// tag лайка
-		event.target.classList.toggle("card__icon-like_active");
+		this._card.querySelector(".card__icon-like").classList.toggle("card__icon-like_active");
 	}
 
 	_removeCard() {
 		//удаление карты
 		this._card.remove();
+		this._card = null;
 	}
 }

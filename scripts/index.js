@@ -4,8 +4,6 @@ import FormValidator from "./FormValidator.js";
 import { validSettings } from "../constans/validSettings.js";
 import { btnDisabled } from "./FormValidator.js";
 
-// const сardTemplate = document.querySelector("#AddNewCard-template").content.querySelector(".card");
-// const card = сardTemplate.querySelector(".card");
 const cards = document.querySelector(".cards");
 
 const buttonsClose = document.querySelectorAll(".popup__button-close"); // находим все крестики проекта по универсальному селектору
@@ -29,8 +27,6 @@ const popupImg = document.querySelector(".popup-img");
 const popupImgImg = popupImg.querySelector(".popup-img__img");
 
 const popupImgTitle = popupImg.querySelector(".popup-img__title");
-
-//const cardClass = new Card();  изучить!
 
 function openPopup(popup) {
 	//добавка класса popup_opened
@@ -95,11 +91,14 @@ export function fillImagePopup(valueLink, valueName) {
 	popupImgTitle.textContent = valueName;
 }
 
+const createCard = (item) => {
+	const cardClass = new Card(item, "#AddNewCard-template");
+	return cardClass.generateCard(item);
+};
+
 initialCards.forEach((item) => {
 	//выгрузка карт из БД
-
-	const card = cardClass.createCard(item);
-	cards.append(card);
+	cards.append(createCard(item));
 });
 
 popupNewCardForm.addEventListener("submit", (event) => {
@@ -110,8 +109,7 @@ popupNewCardForm.addEventListener("submit", (event) => {
 		alt: popupInputTitle.value,
 		link: popupInputLink.value,
 	};
-	const card = cardClass.createCard(item);
-	cards.prepend(card);
+	cards.prepend(createCard(item));
 	event.target.reset();
 	closePopup(popupAddCard);
 	btnDisabled(submitAddCard);
