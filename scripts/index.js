@@ -2,7 +2,6 @@ import { initialCards } from "../constans/initial_cards.js";
 import Card from "../scripts/Card.js";
 import FormValidator from "./FormValidator.js";
 import { validSettings } from "../constans/validSettings.js";
-import { btnDisabled } from "./FormValidator.js";
 
 const cards = document.querySelector(".cards");
 
@@ -65,6 +64,7 @@ buttonsClose.forEach((button) => {
 
 profileEditButton.addEventListener("click", () => {
 	//открытие попап редактирования профиля
+	profileFormValid.resetValidation();
 	openPopup(popupProfile);
 	popupProfileName.value = profileName.textContent;
 	popupProfileAbout.value = profileAbout.textContent;
@@ -80,10 +80,11 @@ popupProfileForm.addEventListener("submit", (event) => {
 
 profileAddButton.addEventListener("click", () => {
 	//открытие попап добавления карточки
+	cardFormValid.toggleButtonState();
 	openPopup(popupAddCard);
 });
 
-export function fillImagePopup(valueLink, valueName) {
+function fillImagePopup(valueLink, valueName) {
 	//отправка атрибутов картинки
 	openPopup(popupImg);
 	popupImgImg.src = valueLink;
@@ -92,13 +93,13 @@ export function fillImagePopup(valueLink, valueName) {
 }
 
 const createCard = (item) => {
-	const cardClass = new Card(item, "#AddNewCard-template");
-	return cardClass.generateCard(item);
+	const cardClass = new Card(item, "#AddNewCard-template", fillImagePopup);
+	return cardClass.generateCard();
 };
 
 initialCards.forEach((item) => {
 	//выгрузка карт из БД
-	cards.append(createCard(item));
+	cards.append(createCard(item)); // *Тоже что в 96 строке* почему? Мы же тут вызываем функцию в нее нужно передать каждый элемент масива?
 });
 
 popupNewCardForm.addEventListener("submit", (event) => {
@@ -112,7 +113,6 @@ popupNewCardForm.addEventListener("submit", (event) => {
 	cards.prepend(createCard(item));
 	event.target.reset();
 	closePopup(popupAddCard);
-	btnDisabled(submitAddCard);
 });
 
 const profileFormValid = new FormValidator(validSettings, popupProfileForm);

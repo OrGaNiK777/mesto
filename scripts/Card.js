@@ -1,10 +1,9 @@
-import { fillImagePopup } from "./index.js";
-
 export default class Card {
-	constructor(item, templateSelector) {
+	constructor(item, templateSelector, fillImagePopup) {
 		this._name = item.name;
 		this._link = item.link;
 		this._templateSelector = templateSelector;
+		this._fillImagePopup = fillImagePopup;
 	}
 
 	_getTemplate() {
@@ -39,7 +38,7 @@ export default class Card {
 			this._removeCard();
 		});
 		this._cardImage.addEventListener("click", () => {
-			fillImagePopup(this._link, this._name);
+			this._fillImagePopup(this._link, this._name);
 		});
 	}
 	_toggleLike() {
