@@ -20,7 +20,6 @@ const popupAddCard = document.querySelector(".popup-add");
 const popupInputTitle = popupAddCard.querySelector("#popupInputTitle");
 const popupInputLink = popupAddCard.querySelector("#popupInputLink");
 const popupNewCardForm = document.querySelector("#popupNewCardForm");
-const submitAddCard = document.querySelector("#submitAddCard");
 
 const popupImg = document.querySelector(".popup-img");
 const popupImgImg = popupImg.querySelector(".popup-img__img");
@@ -64,10 +63,10 @@ buttonsClose.forEach((button) => {
 
 profileEditButton.addEventListener("click", () => {
 	//открытие попап редактирования профиля
-	profileFormValid.resetValidation();
 	openPopup(popupProfile);
 	popupProfileName.value = profileName.textContent;
 	popupProfileAbout.value = profileAbout.textContent;
+	profileFormValid.resetValidation();
 });
 
 popupProfileForm.addEventListener("submit", (event) => {
@@ -80,7 +79,7 @@ popupProfileForm.addEventListener("submit", (event) => {
 
 profileAddButton.addEventListener("click", () => {
 	//открытие попап добавления карточки
-	cardFormValid.toggleButtonState();
+	cardFormValid.resetValidation();
 	openPopup(popupAddCard);
 });
 
@@ -98,8 +97,8 @@ const createCard = (item) => {
 };
 
 initialCards.forEach((item) => {
-	//выгрузка карт из БД
-	cards.append(createCard(item)); // *Тоже что в 96 строке* почему? Мы же тут вызываем функцию в нее нужно передать каждый элемент масива?
+	//выгружаем каждый элемент масива
+	cards.append(createCard(item));
 });
 
 popupNewCardForm.addEventListener("submit", (event) => {
