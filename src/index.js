@@ -1,6 +1,7 @@
+//import "../pages/index.css"; // добавьте импорт главного файла стилей
 import { initialCards } from "../constans/initial_cards.js";
 import Card from "../scripts/Card.js";
-import FormValidator from "./FormValidator.js";
+import FormValidator from "../scripts/FormValidator.js";
 import { validSettings } from "../constans/validSettings.js";
 
 const cards = document.querySelector(".cards");
