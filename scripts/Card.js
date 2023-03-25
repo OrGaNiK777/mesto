@@ -1,9 +1,9 @@
 export default class Card {
-	constructor(item, templateSelector, fillImagePopup) {
+	constructor({ item, handleCardClick }, templateSelector) {
 		this._name = item.name;
 		this._link = item.link;
 		this._templateSelector = templateSelector;
-		this._fillImagePopup = fillImagePopup;
+		this._handleCardClick = handleCardClick;
 	}
 
 	_getTemplate() {
@@ -38,7 +38,7 @@ export default class Card {
 			this._removeCard();
 		});
 		this._cardImage.addEventListener("click", () => {
-			this._fillImagePopup(this._link, this._name);
+			this._handleCardClick(this._link, this._name);
 		});
 	}
 	_toggleLike() {
