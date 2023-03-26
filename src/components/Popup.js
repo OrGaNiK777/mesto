@@ -25,13 +25,18 @@ export default class Popup {
 	}
 
 	setEventListeners() {
+		//закрытие по клику на оверлэй используя contains
+		this._popupSelector.addEventListener("click", (evt) => {
+			if (
+				evt.target.classList.contains("popup") ||
+				evt.target.classList.contains("modal__button-close")
+			) {
+				this.closePopup();
+			}
+		});
+
 		this._closeButton.addEventListener("mousedown", () => {
 			this.closePopup();
-		});
-		this._popupSelector.addEventListener("mousedown", (event) => {
-			if (event.target === event.currentTarget) {
-				this.closePopup(event.currentTarget);
-			}
 		});
 	}
 }

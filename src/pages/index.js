@@ -1,12 +1,12 @@
-import "./pages/index.css"; // добавьте импорт главного файла стилей
-import { initialCards } from "./constans/initial_cards.js";
-import Card from "./scripts/Card.js";
-import FormValidator from "./scripts/FormValidator.js";
-import { validSettings } from "./constans/validSettings.js";
-import Section from "./scripts/Section.js";
-import PopupWithImage from "./scripts/PopupWithImage.js";
-import PopupWithForm from "./scripts/PopupWithForm.js";
-import UserInfo from "./scripts/UserInfo.js";
+import "../pages/index.css"; // добавьте импорт главного файла стилей
+import { initialCards } from "../utils/initial_cards.js";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+import { validSettings } from "../utils/validSettings.js";
+import Section from "../components/Section.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import UserInfo from "../components/UserInfo.js";
 
 const cards = document.querySelector(".cards");
 
