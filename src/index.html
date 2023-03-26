@@ -5,8 +5,8 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Mesto</title>
-		<link rel="stylesheet" href="../pages/index.css" />
-		<!-- <script defer type="module" src="./index.js"></script> -->
+		<link rel="stylesheet" href="./pages/index.css" />
+		<!-- <script defer type="module" src="../index.js"></script> -->
 	</head>
 	<body>
 		<div class="page">
@@ -14,18 +14,18 @@
 				<a href="#"
 					><img
 						class="header__logo"
-						src='<%=require("../images/header-logo.svg")%>'
-						alt="Логотип Mesto" /></a
-				><!-- <%=require('../images/header-logo.svg')%> -->
+						src='<%=require("./images/header-logo.svg")%>'
+						alt="Логотип Mesto"
+				/></a>
 			</header>
 			<main>
 				<section class="profile">
 					<div class="profile__container">
 						<img
 							class="profile__avatar"
-							src="<%=require('../images/avatar.jpg')%>"
+							src='<%=require("./images/avatar.jpg")%>'
 							alt="Аватар"
-						/><!-- <%=require('../images/avatar.jpg')%> -->
+						/>
 						<div class="profile__info">
 							<h1 class="profile__name">Персидская</h1>
 							<p class="profile__about">Кофка</p>
