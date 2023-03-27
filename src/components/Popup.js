@@ -34,9 +34,5 @@ export default class Popup {
 				this.closePopup();
 			}
 		});
-
-		this._closeButton.addEventListener("mousedown", () => {
-			this.closePopup();
-		});
 	}
 }
