@@ -1,5 +1,5 @@
 export default class UserInfo {
-	constructor(name, about) {
+	constructor({ name, about }) {
 		this._name = name;
 		this._about = about;
 	}
@@ -9,7 +9,7 @@ export default class UserInfo {
 			about: this._about.textContent,
 		};
 	}
-	setUserInfo(name, about) {
+	setUserInfo({ name, about }) {
 		this._name.textContent = name;
 		this._about.textContent = about;
 	}

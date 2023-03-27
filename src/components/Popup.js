@@ -26,7 +26,7 @@ export default class Popup {
 
 	setEventListeners() {
 		//закрытие по клику на оверлэй используя contains
-		this._popupSelector.addEventListener("click", (evt) => {
+		this._popupSelector.addEventListener("mousedown", (evt) => {
 			if (
 				evt.target.classList.contains("popup") ||
 				evt.target.classList.contains("popup__button-close")
