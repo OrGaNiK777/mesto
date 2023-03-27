@@ -33,16 +33,20 @@ const openPopupEditProfile = () => {
 profileEditButton.addEventListener("click", openPopupEditProfile);
 
 const popupClassEditProfiles = new PopupWithForm(".popup-profile", {
-	handleFormSubmit: () => {
-		submitEdit();
+	handleFormSubmit: (inputs) => {
+		submitEdit(inputs);
 	},
 });
 
 popupClassEditProfiles.setEventListeners();
 
 //Редактирование, сохранение и закрытие попап редактирования профиля
-const submitEdit = () => {
-	userInform.setUserInfo({ name: popupProfileName.value, about: popupProfileAbout.value });
+const submitEdit = (inputs) => {
+	const item = {
+		name: inputs.name,
+		about: inputs.about,
+	};
+	userInform.setUserInfo(item);
 	popupClassEditProfiles.closePopup();
 };
 
