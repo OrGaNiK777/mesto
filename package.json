@@ -2,7 +2,7 @@
 	"name": "mesto",
 	"version": "0.0.1",
 	"description": "* Адаптивная верстка\r * Редактирование имени и описания пользователя",
-	"main": "123.js",
+	"main": "index.js",
 	"scripts": {
 		"build": "webpack --mode production",
 		"dev": "webpack serve",
