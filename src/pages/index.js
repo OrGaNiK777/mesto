@@ -24,19 +24,17 @@ const popupNewCardForm = document.querySelector("#popupNewCardForm");
 
 const userInform = new UserInfo({ name: profileName, about: profileAbout, avatar: profileAvatar });
 
-// api.getUserInfo().then((data) => {
-// 	const { name, about, avatar } = userInform.getUserInfo();
-// 	console.log(name);
-// 	data.avatar = name;
-// 	data.name = about;
-// 	data.about = avatar;
-// });
-
 api.getUserInfo().then((data) => {
-	(profileAvatar.src = data.avatar),
-		(profileName.textContent = data.name),
-		(profileAbout.textContent = data.about);
+	const { name, about, avatar } = userInform.getUserInfo();
+	(name = data.avatar), (about = data.name), (avatar = data.about);
 });
+
+// api.getUserInfo().then((data) => {
+// 	(profileAvatar.src = data.avatar),
+// 		(profileName.textContent = data.name),
+// 		(profileAbout.textContent = data.about);
+
+// });
 
 const openPopupEditProfile = () => {
 	//открытие попап редактирования профиля
