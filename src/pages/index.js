@@ -24,6 +24,14 @@ const popupNewCardForm = document.querySelector("#popupNewCardForm");
 
 const userInform = new UserInfo({ name: profileName, about: profileAbout, avatar: profileAvatar });
 
+// api.getUserInfo().then((data) => {
+// 	const { name, about, avatar } = userInform.getUserInfo();
+// 	console.log(name);
+// 	data.avatar = name;
+// 	data.name = about;
+// 	data.about = avatar;
+// });
+
 api.getUserInfo().then((data) => {
 	(profileAvatar.src = data.avatar),
 		(profileName.textContent = data.name),
@@ -35,6 +43,7 @@ const openPopupEditProfile = () => {
 	popupClassEditProfiles.openPopup();
 	const { name, about } = userInform.getUserInfo();
 	popupProfileName.value = name;
+	console.log(name);
 	popupProfileAbout.value = about;
 	profileFormValid.resetValidation();
 };
