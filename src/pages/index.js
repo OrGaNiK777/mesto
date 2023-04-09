@@ -1,5 +1,5 @@
 import "./index.css"; // добавьте импорт главного файла стилей
-import { initialCards } from "../utils/initial_cards.js";
+//import { initialCards } from "../utils/initial_cards.js";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import { validSettings } from "../utils/validSettings.js";
@@ -7,6 +7,7 @@ import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
+import api from "../components/Api.js";
 
 const popupProfileName = document.querySelector("#popupProfileName"); //имя - попап изменить профиль
 const popupProfileAbout = document.querySelector("#popupProfileAbout"); //о - попап изменить профиль
@@ -14,12 +15,20 @@ const popupProfileForm = document.querySelector("#popupProfileForm");
 
 const profileName = document.querySelector(".profile__name");
 const profileAbout = document.querySelector(".profile__about");
+const profileAvatar = document.querySelector(".profile__avatar");
+
 const profileEditButton = document.querySelector(".profile__edit-button"); //кнопка изменить профиль
 const profileAddButton = document.querySelector(".profile__add-button"); //кнопка добавить карточку
 
 const popupNewCardForm = document.querySelector("#popupNewCardForm");
 
-const userInform = new UserInfo({ name: profileName, about: profileAbout });
+const userInform = new UserInfo({ name: profileName, about: profileAbout, avatar: profileAvatar });
+
+api.getUserInfo().then((data) => {
+	(profileAvatar.src = data.avatar),
+		(profileName.textContent = data.name),
+		(profileAbout.textContent = data.about);
+});
 
 const openPopupEditProfile = () => {
 	//открытие попап редактирования профиля
@@ -42,11 +51,8 @@ popupClassEditProfiles.setEventListeners();
 
 //Редактирование, сохранение и закрытие попап редактирования профиля
 const submitEdit = (inputs) => {
-	const item = {
-		name: inputs.name,
-		about: inputs.about,
-	};
-	userInform.setUserInfo(item);
+	api.patchUserInfo(inputs);
+	userInform.setUserInfo(inputs);
 	popupClassEditProfiles.closePopup();
 };
 
@@ -81,12 +87,10 @@ popupClassAddCard.setEventListeners();
 
 const submitAdd = (inputs) => {
 	//добавка новой карты
-	const item = {
-		name: inputs.title,
-		alt: inputs.alt,
-		link: inputs.link,
-	};
-	carlList.addItemPrepend(createCard(item));
+	//console.log(inputs)
+	api.postDataCards(inputs);
+
+	carlList.addItemPrepend(createCard(inputs));
 	popupClassAddCard.closePopup();
 };
 
@@ -98,7 +102,10 @@ const carlList = new Section(
 	},
 	".cards"
 );
-carlList.rendererCard(initialCards);
+
+//выгрузка карт с сервера
+
+api.getInitialCards().then((data) => carlList.rendererCard(data));
 
 const handleClickImg = new PopupWithImage(".popup-img");
 handleClickImg.setEventListeners();
