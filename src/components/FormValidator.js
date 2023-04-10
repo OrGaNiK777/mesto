@@ -38,9 +38,13 @@ export default class FormValidator {
 	_setEventListeners() {
 		// Найдём все поля формы и сделаем из них массив
 
-		this._inputList = Array.from(this._formElement.querySelectorAll(this._validSettings.inputSelector));
+		this._inputList = Array.from(
+			this._formElement.querySelectorAll(this._validSettings.inputSelector)
+		);
 		// Найдём в текущей форме кнопку отправки
-		this._buttonElement = this._formElement.querySelector(this._validSettings.submitButtonSelector);
+		this._buttonElement = this._formElement.querySelector(
+			this._validSettings.submitButtonSelector
+		);
 		//чтобы проверить состояние кнопки в самом начале\
 		this.toggleButtonState();
 		this._inputList.forEach((inputElement) => {

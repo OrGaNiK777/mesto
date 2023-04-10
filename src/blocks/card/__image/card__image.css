@@ -4,6 +4,7 @@
 	border-radius: 10px 10px 0 0;
 	cursor: zoom-in;
 	transition: 0.2s;
+	object-fit: cover;
 }
 
 .card__image:hover {

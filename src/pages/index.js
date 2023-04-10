@@ -6,6 +6,7 @@ import { validSettings } from "../utils/validSettings.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+import PopupDeleteCard from "../components/PopupDeleteCard.js";
 import UserInfo from "../components/UserInfo.js";
 import api from "../components/Api.js";
 
@@ -24,20 +25,20 @@ const popupNewCardForm = document.querySelector("#popupNewCardForm");
 
 const userInform = new UserInfo({ name: profileName, about: profileAbout });
 
-// api.getUserInfo().then((data) => {   // что-то не получилось с помощью userInform.getUserInfo() настроить
-// 	const { name, about, avatar } = userInform.getUserInfo();
-// 	name = data.name;
-// 	about = data.about;
-// 	avatar = data.avatar;
-
-// });
+// api.getUserInfo()
+// 	.then((data) => {
+// 		const { name, about, avatar } = userInform.getUserInfo();
+// 		name = data.name;
+// 		about = data.about;
+// 		avatar = data.avatar;
+// 		console.log(name);
+// 	}); // что-то не получилось с помощью userInform.getUserInfo() настроить
 
 api.getUserInfo().then((data) => {
 	(profileAvatar.src = data.avatar),
 		(profileName.textContent = data.name),
 		(profileAbout.textContent = data.about);
 });
-
 const openPopupEditProfile = () => {
 	//открытие попап редактирования профиля
 	popupClassEditProfiles.openPopup();
@@ -94,15 +95,9 @@ popupClassAddCard.setEventListeners();
 
 const submitAdd = (inputs) => {
 	//добавка новой карты
-
-	
-	api.postDataCards({ name: inputs.name, link: inputs.link })
-		.then((response) => {
-			return response.json();
-		})
-		.then((data) => {
-			carlList.addItemPrepend(createCard(data));
-		});
+	api.postDataCards({ name: inputs.name, link: inputs.link }).then((data) => {
+		carlList.addItemPrepend(createCard(data));
+	});
 
 	popupClassAddCard.closePopup();
 };
@@ -116,15 +111,8 @@ const carlList = new Section(
 	".cards"
 );
 
-function checkLikes() {
-	
-}
-
-//выгрузка карт с сервера
-
 api.getInitialCards().then((data) => console.log(data));
-api.getInitialCards().then((data) =>carlList.rendererCard(data));
-//api.getInitialCards().then((data) => numberLikes.textContent = data.likes);
+api.getInitialCards().then((data) => carlList.rendererCard(data));
 
 const handleClickImg = new PopupWithImage(".popup-img");
 handleClickImg.setEventListeners();

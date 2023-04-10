@@ -21,7 +21,13 @@
 			<main>
 				<section class="profile">
 					<div class="profile__container">
-						<img class="profile__avatar" src="_" alt="Аватар" />
+						<button
+							class="profile__avatar-edit"
+							type="button"
+							aria-label="update avatar"
+						>
+							<img class="profile__avatar" src="_" alt="Аватар" />
+						</button>
 						<div class="profile__info">
 							<h1 class="profile__name"></h1>
 							<p class="profile__about"></p>
@@ -50,7 +56,7 @@
 								type="button"
 							></button>
 							<input
-								class="popup__input"
+								class="popup__input popup__input_addEdit"
 								id="popupProfileName"
 								name="name"
 								type="text"
@@ -63,7 +69,7 @@
 								>Вы пропустили это поле</span
 							>
 							<input
-								class="popup__input"
+								class="popup__input popup__input_addEdit"
 								id="popupProfileAbout"
 								name="about"
 								type="text"
@@ -91,7 +97,7 @@
 						<h2 class="popup__title">Новое место</h2>
 						<form class="popup__form" name="form" id="popupNewCardForm" novalidate>
 							<input
-								class="popup__input"
+								class="popup__input popup__input_addEdit"
 								id="popupInputTitle"
 								name="name"
 								type="text"
@@ -104,7 +110,7 @@
 								>Вы пропустили это поле</span
 							>
 							<input
-								class="popup__input"
+								class="popup__input popup__input_addEdit"
 								id="popupInputLink"
 								name="link"
 								type="url"
@@ -135,6 +141,49 @@
 						></button>
 						<img class="popup-img__img" src="#" alt="_" />
 						<h2 class="popup-img__title"></h2>
+					</div>
+				</div>
+				<div class="popup popup-delete">
+					<div class="popup__container">
+						<button
+							id="buttonClosePopupDelete"
+							class="popup__button-close"
+							type="button"
+						></button>
+						<h2 class="popup__title">Вы уверены?</h2>
+						<button
+							class="popup__button-save popup__button-save_delete"
+							id="submitDeleteCard"
+							type="submit"
+						>
+							Да!
+						</button>
+					</div>
+				</div>
+				<div class="popup popup-avatar">
+					<div class="popup__container">
+						<button
+							id="buttonClosePopupAvatar"
+							class="popup__button-close"
+							type="button"
+						></button>
+						<h2 class="popup__title">Обновить аватар</h2>
+						<form class="popup__form" name="form" id="popupAvatar" novalidate>
+							<input
+								class="popup__input popup__input_avatar"
+								id="popupInputLink"
+								name="link"
+								type="url"
+								placeholder="Ссылка на страницу"
+								required
+							/>
+							<span class="popup__input-error popupInputLink-error"
+								>Введите адрес сайта</span
+							>
+							<button class="popup__button-save" id="submitAvatar" type="submit">
+								Сохранить
+							</button>
+						</form>
 					</div>
 				</div>
 			</div>
