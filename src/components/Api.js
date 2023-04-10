@@ -13,7 +13,7 @@ class Api {
 	}
 
 	getUserInfo() {
-		return fetch(`${this._url}/users/me`, {
+		return fetch(`${this._url}users/me`, {
 			headers: {
 				authorization: `${this._token}`,
 				"Content-Type": "application/json",
@@ -22,7 +22,7 @@ class Api {
 	}
 
 	getInitialCards() {
-		return fetch(`${this._url}/cards/`, {
+		return fetch(`${this._url}cards`, {
 			headers: {
 				authorization: `${this._token}`,
 				"Content-Type": "application/json",
@@ -31,7 +31,7 @@ class Api {
 	}
 
 	patchUserInfo(data) {
-		return fetch(`${this._url}/users/me`, {
+		return fetch(`${this._url}users/me`, {
 			method: "PATCH",
 			headers: {
 				authorization: `${this._token}`,
@@ -45,22 +45,22 @@ class Api {
 	}
 
 	postDataCards(data) {
-		return fetch(`${this._url}/cards/`, {
-			method: "POST",
+		return fetch(`${this._url}cards/`, {
+			method: "post",
 			headers: {
 				authorization: `${this._token}`,
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify({
-				title: data.title,
 				link: data.link,
+				name: data.name,
 			}),
 		});
 	}
 }
 
 const api = new Api({
-	url: "https://mesto.nomoreparties.co/v1/cohort-63",
+	url: "https://mesto.nomoreparties.co/v1/cohort-63/",
 	token: "17275e88-ca40-4ac8-86a3-d9ab7c8e3960",
 });
 

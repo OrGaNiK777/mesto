@@ -1,11 +1,10 @@
 .card__icon-like {
 	padding: 0;
-	background-image: url(../../../images/icon-like.svg);
+	background-image: url(../../../../images/icon-like.svg);
 	width: 22px;
 	height: 19px;
 	border: none;
-	margin-top: 25px;
-	margin-bottom: 25px;
+	margin-top: 18px;
 	background-color: white;
 	background-repeat: no-repeat;
 }

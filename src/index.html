@@ -21,11 +21,7 @@
 			<main>
 				<section class="profile">
 					<div class="profile__container">
-						<img
-							class="profile__avatar"
-							src='_'
-							alt="Аватар"
-						/>
+						<img class="profile__avatar" src="_" alt="Аватар" />
 						<div class="profile__info">
 							<h1 class="profile__name"></h1>
 							<p class="profile__about"></p>
@@ -97,7 +93,7 @@
 							<input
 								class="popup__input"
 								id="popupInputTitle"
-								name="title"
+								name="name"
 								type="text"
 								placeholder="Название"
 								required
@@ -149,7 +145,10 @@
 				<img class="card__image" src="#" alt="_" />
 				<div class="card__info">
 					<h2 class="card__title"></h2>
-					<button class="card__icon-like" type="button"></button>
+					<div class="card__like">
+						<button class="card__icon-like" type="button"></button>
+						<p class="card__number-likes"></p>
+					</div>
 				</div>
 			</article>
 		</template>

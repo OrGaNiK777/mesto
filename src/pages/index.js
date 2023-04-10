@@ -22,26 +22,27 @@ const profileAddButton = document.querySelector(".profile__add-button"); //кн�
 
 const popupNewCardForm = document.querySelector("#popupNewCardForm");
 
-const userInform = new UserInfo({ name: profileName, about: profileAbout, avatar: profileAvatar });
+const userInform = new UserInfo({ name: profileName, about: profileAbout });
 
-api.getUserInfo().then((data) => {
-	const { name, about, avatar } = userInform.getUserInfo();
-	(name = data.avatar), (about = data.name), (avatar = data.about);
-});
-
-// api.getUserInfo().then((data) => {
-// 	(profileAvatar.src = data.avatar),
-// 		(profileName.textContent = data.name),
-// 		(profileAbout.textContent = data.about);
+// api.getUserInfo().then((data) => {   // что-то не получилось с помощью userInform.getUserInfo() настроить
+// 	const { name, about, avatar } = userInform.getUserInfo();
+// 	name = data.name;
+// 	about = data.about;
+// 	avatar = data.avatar;
 
 // });
+
+api.getUserInfo().then((data) => {
+	(profileAvatar.src = data.avatar),
+		(profileName.textContent = data.name),
+		(profileAbout.textContent = data.about);
+});
 
 const openPopupEditProfile = () => {
 	//открытие попап редактирования профиля
 	popupClassEditProfiles.openPopup();
 	const { name, about } = userInform.getUserInfo();
 	popupProfileName.value = name;
-	console.log(name);
 	popupProfileAbout.value = about;
 	profileFormValid.resetValidation();
 };
@@ -58,8 +59,7 @@ popupClassEditProfiles.setEventListeners();
 
 //Редактирование, сохранение и закрытие попап редактирования профиля
 const submitEdit = (inputs) => {
-	api.patchUserInfo(inputs);
-	userInform.setUserInfo(inputs);
+	api.patchUserInfo(inputs).then((data) => userInform.setUserInfo(data));
 	popupClassEditProfiles.closePopup();
 };
 
@@ -94,10 +94,16 @@ popupClassAddCard.setEventListeners();
 
 const submitAdd = (inputs) => {
 	//добавка новой карты
-	//console.log(inputs)
-	api.postDataCards(inputs);
 
-	carlList.addItemPrepend(createCard(inputs));
+	
+	api.postDataCards({ name: inputs.name, link: inputs.link })
+		.then((response) => {
+			return response.json();
+		})
+		.then((data) => {
+			carlList.addItemPrepend(createCard(data));
+		});
+
 	popupClassAddCard.closePopup();
 };
 
@@ -110,9 +116,15 @@ const carlList = new Section(
 	".cards"
 );
 
+function checkLikes() {
+	
+}
+
 //выгрузка карт с сервера
 
-api.getInitialCards().then((data) => carlList.rendererCard(data));
+api.getInitialCards().then((data) => console.log(data));
+api.getInitialCards().then((data) =>carlList.rendererCard(data));
+//api.getInitialCards().then((data) => numberLikes.textContent = data.likes);
 
 const handleClickImg = new PopupWithImage(".popup-img");
 handleClickImg.setEventListeners();
