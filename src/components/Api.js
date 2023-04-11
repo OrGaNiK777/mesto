@@ -2,7 +2,7 @@ class Api {
 	constructor(options) {
 		// тело конструктора
 		this._url = options.url;
-		this._token = options.token;
+		this._headers = options.headers;
 	}
 
 	// обработка результата ответа сервера
@@ -17,20 +17,14 @@ class Api {
 	//данные о пользователе
 	getUserInfo() {
 		return fetch(`${this._url}users/me`, {
-			headers: {
-				authorization: `${this._token}`,
-				"Content-Type": "application/json",
-			},
+			headers: this._headers,
 		}).then(this._checkingResponse);
 	}
 
 	//карты из сервера
 	getInitialCards() {
 		return fetch(`${this._url}cards`, {
-			headers: {
-				authorization: `${this._token}`,
-				"Content-Type": "application/json",
-			},
+			headers: this._headers,
 		}).then(this._checkingResponse);
 	}
 
@@ -38,10 +32,7 @@ class Api {
 	patchUserInfo(data) {
 		return fetch(`${this._url}users/me`, {
 			method: "PATCH",
-			headers: {
-				authorization: `${this._token}`,
-				"Content-Type": "application/json",
-			},
+			headers: this._headers,
 			body: JSON.stringify({
 				name: data.name,
 				about: data.about,
@@ -53,10 +44,7 @@ class Api {
 	postDataCards(data) {
 		return fetch(`${this._url}cards/`, {
 			method: "post",
-			headers: {
-				authorization: `${this._token}`,
-				"Content-Type": "application/json",
-			},
+			headers: this._headers,
 			body: JSON.stringify({
 				link: data.link,
 				name: data.name,
@@ -65,26 +53,26 @@ class Api {
 	}
 
 	//Удаление карточки
-	deleteCard(cardId) {
-		return fetch(`${this._url}/cards/${cardId}`, {
+	deleteCard(id) {
+		return fetch(`${this._url}/cards/${id}`, {
 			method: "DELETE",
-			headers: { authorization: `${this._token}` },
+			headers: this._headers,
 		}).then(this._checkingResponse);
 	}
 
 	//Постановка лайка
-	putLike(cardId) {
-		return fetch(`${this._url}/cards/${cardId}/likes`, {
+	putLike(id) {
+		return fetch(`${this._url}/cards/${id}/likes`, {
 			method: "PUT",
-			headers: { authorization: `${this._token}` },
+			headers: this._headers,
 		}).then(this._checkingResponse);
 	}
 
 	//снятие лайка
-	deleteLike(cardId) {
-		return fetch(`${this._url}/cards/${cardId}/likes`, {
+	deleteLike(id) {
+		return fetch(`${this._url}/cards/${id}/likes`, {
 			method: "DELETE",
-			headers: { authorization: `${this._token}` },
+			headers: this._headers,
 		}).then(this._checkingResponse);
 	}
 
@@ -92,7 +80,7 @@ class Api {
 	updateAvatar(avatar) {
 		return fetch(`${this.this._url}/users/me/avatar`, {
 			method: "PATCH",
-			headers: { authorization: `${this._token}` },
+			headers: this._headers,
 			body: JSON.stringify({
 				avatar: avatar,
 			}),
@@ -102,7 +90,7 @@ class Api {
 
 const api = new Api({
 	url: "https://mesto.nomoreparties.co/v1/cohort-63/",
-	token: "17275e88-ca40-4ac8-86a3-d9ab7c8e3960",
+	headers: { authorization: "17275e88-ca40-4ac8-86a3-d9ab7c8e3960", "Content-Type": "application/json" },
 });
 
 export default api;

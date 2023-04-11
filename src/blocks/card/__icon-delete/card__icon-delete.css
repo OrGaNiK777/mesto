@@ -10,6 +10,7 @@
 	background-color: transparent;
 	position: absolute;
 	z-index: 1;
+	visibility: hidden;
 }
 
 .card__icon-delete:hover {

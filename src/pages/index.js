@@ -1,5 +1,4 @@
 import "./index.css"; // добавьте импорт главного файла стилей
-//import { initialCards } from "../utils/initial_cards.js";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import { validSettings } from "../utils/validSettings.js";
@@ -23,7 +22,11 @@ const profileAddButton = document.querySelector(".profile__add-button"); //кн�
 
 const popupNewCardForm = document.querySelector("#popupNewCardForm");
 
-const userInform = new UserInfo({ name: profileName, about: profileAbout });
+const userInform = new UserInfo({ name: profileName, about: profileAbout, avatar: profileAvatar });
+
+const thisOwner = (idData) => {
+	return idData.owner._id === userInform.getUserInfo().id ? true : false;
+};
 
 // api.getUserInfo()
 // 	.then((data) => {
@@ -35,9 +38,7 @@ const userInform = new UserInfo({ name: profileName, about: profileAbout });
 // 	}); // что-то не получилось с помощью userInform.getUserInfo() настроить
 
 api.getUserInfo().then((data) => {
-	(profileAvatar.src = data.avatar),
-		(profileName.textContent = data.name),
-		(profileAbout.textContent = data.about);
+	(profileAvatar.src = data.avatar), (profileName.textContent = data.name), (profileAbout.textContent = data.about);
 });
 const openPopupEditProfile = () => {
 	//открытие попап редактирования профиля
@@ -72,12 +73,42 @@ const openPopupAddCard = () => {
 
 profileAddButton.addEventListener("click", openPopupAddCard);
 
-function createCard(item) {
+function createCard(item, thisOwner) {
 	const cardClass = new Card(
+		item,
+		thisOwner,
 		{
-			item,
 			handleCardClick: (link, name) => {
 				handleClickImg.openPopup(link, name);
+			},
+			handleDeleteCard: (item) => {
+				popupDeleteCard.openPopup({
+					handleSubmit: () => {
+						api.deleteCard(item).then(() => {
+							cardClass.delete();
+						});
+					},
+				});
+			},
+			handleDeleteLike: () => {
+				api.deleteLike(item._id)
+					.then((data) => {
+						cardClass.toggleLike();
+						cardClass.updateNumberLikes(data.likes.length);
+					})
+					.catch((error) => {
+						console.log(error.message);
+					});
+			},
+			handleAddLike: () => {
+				api.putLike(item._id)
+					.then((data) => {
+						//cardClass.toggleLike();
+						cardClass.updateNumberLikes(data.likes.length);
+					})
+					.catch((error) => {
+						console.log(error.message);
+					});
 			},
 		},
 		"#AddNewCard-template"
@@ -96,23 +127,36 @@ popupClassAddCard.setEventListeners();
 const submitAdd = (inputs) => {
 	//добавка новой карты
 	api.postDataCards({ name: inputs.name, link: inputs.link }).then((data) => {
-		carlList.addItemPrepend(createCard(data));
+		cardList.addItemPrepend(createCard(data));
 	});
 
 	popupClassAddCard.closePopup();
 };
 
-const carlList = new Section(
+const cardList = new Section(
 	{
 		renderer: (item) => {
-			carlList.addItemAppend(createCard(item));
+			cardList.addItemAppend(createCard(item, thisOwner(item)));
 		},
 	},
 	".cards"
 );
 
-api.getInitialCards().then((data) => console.log(data));
-api.getInitialCards().then((data) => carlList.rendererCard(data));
+api.getInitialCards().then((data) => cardList.rendererCard(data));
+
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+	.then(([data, cardListData]) => {
+		userInform.setUserInfo(data.name, data.about);
+		userInform.setUserAvatar(data.avatar);
+		userInform.setUserId(data._id);
+		cardList.rendererCard(cardListData);
+	})
+	.catch((error) => {
+		console.log(error.message);
+	});
+
+const popupDeleteCard = new PopupDeleteCard(".popup-delete");
+popupDeleteCard.setEventListeners();
 
 const handleClickImg = new PopupWithImage(".popup-img");
 handleClickImg.setEventListeners();
