@@ -21,19 +21,19 @@ export default class Card {
 		return сardTemplate;
 	}
 
+	// tag лайка
 	toggleLike() {
-		// tag лайка
 		this._likeButton.classList.toggle("card__icon-like_active");
 	}
 
+	// проверка лайка
 	_toggleLike() {
-		// tag лайка
 		if (this._likeButton.classList.contains("card__icon-like_active")) this._handleDeleteLike();
 		else this._handleAddLike();
 	}
 
+	//удаление карты
 	removeCard() {
-		//удаление карты
 		this._card.remove();
 		this._card = null;
 	}
@@ -56,6 +56,7 @@ export default class Card {
 		});
 	}
 
+	//проверка на лайк
 	_renderLikeIcon() {
 		this._likeButton = this._card.querySelector(".card__icon-like");
 		this._likes.forEach(() => {
@@ -65,6 +66,7 @@ export default class Card {
 		});
 	}
 
+	//проверка на иконку удаления
 	_renderDeleteIcon() {
 		if (this._thisOwner) {
 			this._deleteButton = this._card.querySelector(".card__icon-delete");
@@ -72,9 +74,9 @@ export default class Card {
 			this._deleteButton.addEventListener("click", () => this._handleDeleteCard(this._id));
 		}
 	}
-
+	
+	//создние карточки и ее возврат
 	generateCard() {
-		//создние карточки и ее возврат
 		this._card = this._getTemplate();
 		const cardTitle = this._card.querySelector(".card__title");
 		const cardImage = this._card.querySelector(".card__image");

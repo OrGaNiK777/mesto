@@ -25,7 +25,7 @@ export default class PopupDeleteCard extends Popup {
 		super.setEventListeners();
 	}
 	
-	renderLoading(text) {
+	loading(text) {
 		this._form.querySelector(".popup__button-save").textContent = text;
 	}
 }
