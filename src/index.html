@@ -11,34 +11,22 @@
 	<body>
 		<div class="page">
 			<header class="header">
-				<a href="#"
-					><img
-						class="header__logo"
-						src='<%=require("./images/header-logo.svg")%>'
-						alt="Логотип Mesto"
-				/></a>
+				<a href="#"><img class="header__logo" src='<%=require("./images/header-logo.svg")%>' alt="Логотип Mesto" /></a>
 			</header>
 			<main>
 				<section class="profile">
 					<div class="profile__container">
-						<button
-							class="profile__avatar-edit"
-							type="button"
-							aria-label="update avatar"
-						>
+						<button class="profile__avatar-edit" type="button" aria-label="update avatar">
 							<img class="profile__avatar" src="_" alt="Аватар" />
 						</button>
+
 						<div class="profile__info">
 							<h1 class="profile__name"></h1>
 							<p class="profile__about"></p>
 							<button class="profile__edit-button" type="button"></button>
 						</div>
 					</div>
-					<button
-						class="profile__add-button"
-						type="button"
-						aria-label="Кнопка добавить"
-					></button>
+					<button class="profile__add-button" type="button" aria-label="Кнопка добавить"></button>
 				</section>
 				<section class="cards"></section>
 			</main>
@@ -50,45 +38,12 @@
 					<div class="popup__container">
 						<h2 class="popup__title">Редактировать профиль</h2>
 						<form class="popup__form" name="form" id="popupProfileForm" novalidate>
-							<button
-								id="buttonClosePopupEditProfile"
-								class="popup__button-close"
-								type="button"
-							></button>
-							<input
-								class="popup__input popup__input_addEdit"
-								id="popupProfileName"
-								name="name"
-								type="text"
-								placeholder="Имя"
-								required
-								maxlength="40"
-								minlength="2"
-							/>
-							<span class="popup__input-error popupProfileName-error"
-								>Вы пропустили это поле</span
-							>
-							<input
-								class="popup__input popup__input_addEdit"
-								id="popupProfileAbout"
-								name="about"
-								type="text"
-								placeholder="Описание"
-								required
-								maxlength="200"
-								minlength="2"
-							/>
-							<span class="popup__input-error popupProfileAbout-error"
-								>Вы пропустили это поле</span
-							>
-							<button
-								class="popup__button-save popup__button-save_inactive"
-								id="submitEditProfife"
-								type="submit"
-								disabled
-							>
-								Сохранить
-							</button>
+							<button id="buttonClosePopupEditProfile" class="popup__button-close" type="button"></button>
+							<input class="popup__input popup__input_addEdit" id="popupProfileName" name="name" type="text" placeholder="Имя" required maxlength="40" minlength="2" />
+							<span class="popup__input-error popupProfileName-error">Вы пропустили это поле</span>
+							<input class="popup__input popup__input_addEdit" id="popupProfileAbout" name="about" type="text" placeholder="Описание" required maxlength="200" minlength="2" />
+							<span class="popup__input-error popupProfileAbout-error">Вы пропустили это поле</span>
+							<button class="popup__button-save popup__button-save_inactive" id="submitEditProfife" type="submit" disabled>Сохранить</button>
 						</form>
 					</div>
 				</div>
@@ -96,93 +51,39 @@
 					<div class="popup__container">
 						<h2 class="popup__title">Новое место</h2>
 						<form class="popup__form" name="form" id="popupNewCardForm" novalidate>
-							<input
-								class="popup__input popup__input_addEdit"
-								id="popupInputTitle"
-								name="name"
-								type="text"
-								placeholder="Название"
-								required
-								maxlength="30"
-								minlength="2"
-							/>
-							<span class="popup__input-error popupInputTitle-error"
-								>Вы пропустили это поле</span
-							>
-							<input
-								class="popup__input popup__input_addEdit"
-								id="popupInputLink"
-								name="link"
-								type="url"
-								placeholder="Ссылка на страницу"
-								required
-							/>
-							<span class="popup__input-error popupInputLink-error"
-								>Введите адрес сайта</span
-							>
-							<button
-								class="popup__button-save popup__button-save_inactive"
-								id="submitAddCard"
-								type="submit"
-								disabled
-							>
-								Создать
-							</button>
+							<input class="popup__input popup__input_addEdit" id="popupInputTitle" name="name" type="text" placeholder="Название" required maxlength="30" minlength="2" />
+							<span class="popup__input-error popupInputTitle-error">Вы пропустили это поле</span>
+							<input class="popup__input popup__input_addEdit" id="popupInputLink" name="link" type="url" placeholder="Ссылка на страницу" required />
+							<span class="popup__input-error popupInputLink-error">Введите адрес сайта</span>
+							<button class="popup__button-save popup__button-save_inactive" id="submitAddCard" type="submit" disabled>Создать</button>
 							<button class="popup__button-close" type="button"></button>
 						</form>
 					</div>
 				</div>
 				<div class="popup popup-img">
 					<div class="popup-img__container">
-						<button
-							id="buttonClosePopupImg"
-							class="popup__button-close"
-							type="button"
-						></button>
+						<button id="buttonClosePopupImg" class="popup__button-close" type="button"></button>
 						<img class="popup-img__img" src="#" alt="_" />
 						<h2 class="popup-img__title"></h2>
 					</div>
 				</div>
 				<div class="popup popup-delete">
 					<div class="popup__container">
-						<form class="popup__form" name="form" id="popupConfirmDelete" novalidate></form><button
-							id="buttonClosePopupDelete"
-							class="popup__button-close"
-							type="button"
-						></button>
-						<h2 class="popup__title">Вы уверены?</h2>
-						<button
-							class="popup__button-save popup__button-save_delete"
-							id="submitDeleteCard"
-							type="submit"
-						>
-							Да!
-						</button></form>
+						<form class="popup__form" name="form" id="popupConfirmDelete" novalidate>
+							<button id="buttonClosePopupDelete" class="popup__button-close" type="button"></button>
+							<h2 class="popup__title">Вы уверены?</h2>
+							<button class="popup__button-save popup__button-save_delete" id="submitDeleteCard" type="submit">Да!</button>
+						</form>
 					</div>
 				</div>
 				<div class="popup popup-avatar">
 					<div class="popup__container">
-						<button
-							id="buttonClosePopupAvatar"
-							class="popup__button-close"
-							type="button"
-						></button>
+						<button id="buttonClosePopupAvatar" class="popup__button-close" type="button"></button>
 						<h2 class="popup__title">Обновить аватар</h2>
-						<form class="popup__form" name="form" id="popupAvatar" novalidate>
-							<input
-								class="popup__input popup__input_avatar"
-								id="popupInputLink"
-								name="link"
-								type="url"
-								placeholder="Ссылка на страницу"
-								required
-							/>
-							<span class="popup__input-error popupInputLink-error"
-								>Введите адрес сайта</span
-							>
-							<button class="popup__button-save" id="submitAvatar" type="submit">
-								Сохранить
-							</button>
+						<form class="popup__form" name="form" id="popupAvatarForm" novalidate>
+							<input class="popup__input popup__input_avatar" id="popupInputLink" name="link" type="url" placeholder="Ссылка на страницу" required />
+							<span class="popup__input-error popupInputLink-error">Введите адрес сайта</span>
+							<button class="popup__button-save" id="submitAvatar" type="submit">Сохранить</button>
 						</form>
 					</div>
 				</div>

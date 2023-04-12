@@ -40,7 +40,7 @@ class Api {
 		}).then(this._checkingResponse);
 	}
 
-	//добавление новой карты
+	//post добавление новой карты
 	postDataCards(data) {
 		return fetch(`${this._url}cards/`, {
 			method: "post",
@@ -78,7 +78,7 @@ class Api {
 
 	//Обновление аватара пользователя
 	updateAvatar(avatar) {
-		return fetch(`${this.this._url}/users/me/avatar`, {
+		return fetch(`${this._url}/users/me/avatar`, {
 			method: "PATCH",
 			headers: this._headers,
 			body: JSON.stringify({

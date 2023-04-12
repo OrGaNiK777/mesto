@@ -23,6 +23,11 @@ export default class Card {
 
 	toggleLike() {
 		// tag лайка
+		this._likeButton.classList.toggle("card__icon-like_active");
+	}
+
+	_toggleLike() {
+		// tag лайка
 		if (this._likeButton.classList.contains("card__icon-like_active")) this._handleDeleteLike();
 		else this._handleAddLike();
 	}
@@ -33,14 +38,29 @@ export default class Card {
 		this._card = null;
 	}
 
-	_delete() {
-		() => this._handleDeleteCard(this._id);
+	//обновить количество лайков
+	updateNumberLikes(number) {
+		const numberLikes = this._card.querySelector(".card__number-likes");
+		numberLikes.textContent = number;
 	}
 
-	_renderLike() {
+	_setEventListeners() {
+		this._cardImage = this._card.querySelector(".card__image");
+		this._likeButton = this._card.querySelector(".card__icon-like");
+
+		this._likeButton.addEventListener("click", () => {
+			this._toggleLike();
+		});
+		this._cardImage.addEventListener("click", () => {
+			this._handleCardClick(this._link, this._name);
+		});
+	}
+
+	_renderLikeIcon() {
+		this._likeButton = this._card.querySelector(".card__icon-like");
 		this._likes.forEach(() => {
 			if (this._thisOwner) {
-				this._card.querySelector(".card__icon-like").classList.add("card__icon-like_active");
+				this._likeButton.classList.add("card__icon-like_active");
 			}
 		});
 	}
@@ -49,31 +69,8 @@ export default class Card {
 		if (this._thisOwner) {
 			this._deleteButton = this._card.querySelector(".card__icon-delete");
 			this._deleteButton.classList.add("card__icon-delete_active");
-			this._deleteButton.addEventListener("click", () => {
-				this._delete();
-			});
+			this._deleteButton.addEventListener("click", () => this._handleDeleteCard(this._id));
 		}
-	}
-
-	//обновить количество лайков
-	updateNumberLikes() {
-		this._card.querySelector(".card__number-likes").textContent = this._likes.length;
-	}
-
-	_setEventListeners() {
-		this._cardImage = this._card.querySelector(".card__image");
-		this._likeButton = this._card.querySelector(".card__icon-like");
-		this._deleteButton = this._card.querySelector(".card__icon-delete");
-
-		this._likeButton.addEventListener("click", () => {
-			this.toggleLike();
-		});
-		this._deleteButton.addEventListener("click", () => {
-			this._removeCard();
-		});
-		this._cardImage.addEventListener("click", () => {
-			this._handleCardClick(this._link, this._name);
-		});
 	}
 
 	generateCard() {
@@ -84,7 +81,7 @@ export default class Card {
 
 		this._setEventListeners();
 		this._renderDeleteIcon();
-		this._renderLike();
+		this._renderLikeIcon();
 		this.updateNumberLikes(this._likes.length);
 
 		cardTitle.textContent = this._name;

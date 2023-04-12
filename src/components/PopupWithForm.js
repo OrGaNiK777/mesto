@@ -30,4 +30,7 @@ export default class PopupWithForm extends Popup {
 		this._form.addEventListener("submit", this._onSubmit);
 		super.setEventListeners();
 	}
+	renderLoading(text) {
+		this._form.querySelector(".popup__button-save").textContent = text;
+	}
 }

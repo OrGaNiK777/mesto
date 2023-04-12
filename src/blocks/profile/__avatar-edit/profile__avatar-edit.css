@@ -9,12 +9,10 @@
 	object-fit: cover;
 	background-repeat: no-repeat;
 	background-color: hsla(0, 0%, 0%, 0);
-    
 }
 
 .profile__avatar-edit:hover {
 	background-image: url("../../../images/edit-avatar.svg");
 	background-position: center center;
 	content: "";
-   
 }
