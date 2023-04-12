@@ -72,7 +72,6 @@ export default class Card {
 			this._deleteButton = this._card.querySelector(".card__icon-delete");
 			this._deleteButton.classList.add("card__icon-delete_active");
 			this._deleteButton.addEventListener("click", () => this._handleDeleteCard(this._id));
-			console.log(this._thisOwner)
 		}
 	}
 

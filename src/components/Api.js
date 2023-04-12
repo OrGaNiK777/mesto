@@ -14,77 +14,81 @@ class Api {
 		return Promise.reject(`Ошибка: ${res.status}`);
 	}
 
+	_request(url, options) {
+		return fetch(url, options).then(this._checkingResponse);
+	}
+
 	//получение данных о пользователе
 	getUserInfo() {
-		return fetch(`${this._url}users/me`, {
+		return this._request(`${this._url}users/me`, {
 			headers: this._headers,
-		}).then(this._checkingResponse);
+		});
 	}
 
 	//выгрузка карт с сервера
 	getInitialCards() {
-		return fetch(`${this._url}cards`, {
+		return this._request(`${this._url}cards`, {
 			headers: this._headers,
-		}).then(this._checkingResponse);
+		});
 	}
 
 	//обновление данных о пользователе
 	patchUserInfo(data) {
-		return fetch(`${this._url}users/me`, {
+		return this._request(`${this._url}users/me`, {
 			method: "PATCH",
 			headers: this._headers,
 			body: JSON.stringify({
 				name: data.name,
 				about: data.about,
 			}),
-		}).then(this._checkingResponse);
+		});
 	}
 
 	//отправка данных новой карты
 	postDataCards(data) {
-		return fetch(`${this._url}cards/`, {
+		return this._request(`${this._url}cards/`, {
 			method: "post",
 			headers: this._headers,
 			body: JSON.stringify({
 				link: data.link,
 				name: data.name,
 			}),
-		}).then(this._checkingResponse);
+		});
 	}
 
 	//Удаление карточки
 	deleteCard(id) {
-		return fetch(`${this._url}/cards/${id}`, {
+		return this._request(`${this._url}/cards/${id}`, {
 			method: "DELETE",
 			headers: this._headers,
-		}).then(this._checkingResponse);
+		});
 	}
 
 	//лайк
 	putLike(id) {
-		return fetch(`${this._url}/cards/${id}/likes`, {
+		return this._request(`${this._url}/cards/${id}/likes`, {
 			method: "PUT",
 			headers: this._headers,
-		}).then(this._checkingResponse);
+		});
 	}
 
 	//удаление лайка
 	deleteLike(id) {
-		return fetch(`${this._url}/cards/${id}/likes`, {
+		return this._request(`${this._url}/cards/${id}/likes`, {
 			method: "DELETE",
 			headers: this._headers,
-		}).then(this._checkingResponse);
+		});
 	}
 
 	//Обновление аватара пользователя
 	updateAvatar(avatar) {
-		return fetch(`${this._url}users/me/avatar`, {
+		return this._request(`${this._url}users/me/avatar`, {
 			method: "PATCH",
 			headers: this._headers,
 			body: JSON.stringify({
 				avatar: avatar,
 			}),
-		}).then(this._checkingResponse);
+		});
 	}
 }
 
