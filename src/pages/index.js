@@ -85,7 +85,7 @@ const submitAdd = (inputs) => {
 	popupClassAddCard.loading("Создание...");
 	api.postDataCards({ name: inputs.name, link: inputs.link })
 		.then((data) => {
-			cardList.addItemPrepend(createCard(data));
+			cardList.addItemPrepend(createCard(data, true));
 		})
 		.catch((error) => {
 			console.log(error.message);

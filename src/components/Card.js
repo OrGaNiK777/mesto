@@ -72,19 +72,20 @@ export default class Card {
 			this._deleteButton = this._card.querySelector(".card__icon-delete");
 			this._deleteButton.classList.add("card__icon-delete_active");
 			this._deleteButton.addEventListener("click", () => this._handleDeleteCard(this._id));
+			console.log(this._thisOwner)
 		}
 	}
-	
+
 	//создние карточки и ее возврат
 	generateCard() {
 		this._card = this._getTemplate();
 		const cardTitle = this._card.querySelector(".card__title");
 		const cardImage = this._card.querySelector(".card__image");
 
+		this.updateNumberLikes(this._likes.length);
 		this._setEventListeners();
 		this._renderDeleteIcon();
 		this._renderLikeIcon();
-		this.updateNumberLikes(this._likes.length);
 
 		cardTitle.textContent = this._name;
 		cardImage.src = this._link;
