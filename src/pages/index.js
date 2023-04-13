@@ -27,7 +27,7 @@ const profileAvatarEdit = document.querySelector(".profile__avatar-edit");
 
 //выяснение пользователя
 const thisOwner = (idData) => {
-	return idData.owner._id === userInform.getUserInfo().id ? true : false;
+	return idData === userInform.getUserInfo().id ? true : false;
 };
 
 const userInform = new UserInfo({ name: profileName, about: profileAbout, avatar: profileAvatar });
@@ -85,7 +85,7 @@ const submitAdd = (inputs) => {
 	popupClassAddCard.loading("Создание...");
 	api.postDataCards({ name: inputs.name, link: inputs.link })
 		.then((data) => {
-			cardList.addItemPrepend(createCard(data, true));
+			cardList.addItemPrepend(createCard(data, true, false));
 		})
 		.catch((error) => {
 			console.log(error.message);
@@ -131,17 +131,19 @@ const submitAvatar = (inputs) => {
 const cardList = new Section(
 	{
 		renderer: (item) => {
-			cardList.addItemAppend(createCard(item, thisOwner(item)));
+			// console.log(item.likes.forEach(() => {});
+			cardList.addItemAppend(createCard(item, thisOwner(item.owner._id), userInform.getUserInfo().id));
 		},
 	},
 	".cards"
 );
 
 //создание карты(со всеми бонусами)
-function createCard(item, thisOwner) {
+function createCard(item, thisOwner, idOwner) {
 	const cardClass = new Card(
 		item,
 		thisOwner,
+		idOwner,
 		{
 			handleCardClick: (link, name) => {
 				handleClickImg.openPopup(link, name);

@@ -1,5 +1,5 @@
 export default class Card {
-	constructor(item, thisOwner, { handleCardClick, handleDeleteCard, handleAddLike, handleDeleteLike }, templateSelector) {
+	constructor(item, thisOwner, idOwner, { handleCardClick, handleDeleteCard, handleAddLike, handleDeleteLike }, templateSelector) {
 		this._name = item.name;
 		this._link = item.link;
 		this._likes = item.likes;
@@ -7,6 +7,7 @@ export default class Card {
 		this._owner = item.owner;
 
 		this._thisOwner = thisOwner;
+		this._idOwner = idOwner;
 
 		this._handleDeleteCard = handleDeleteCard;
 		this._handleAddLike = handleAddLike;
@@ -26,7 +27,7 @@ export default class Card {
 		this._likeButton.classList.toggle("card__icon-like_active");
 	}
 
-	// проверка лайка
+	// проверка на лайк
 	_toggleLike() {
 		if (this._likeButton.classList.contains("card__icon-like_active")) this._handleDeleteLike();
 		else this._handleAddLike();
@@ -59,8 +60,8 @@ export default class Card {
 	//проверка на лайк
 	_renderLikeIcon() {
 		this._likeButton = this._card.querySelector(".card__icon-like");
-		this._likes.forEach(() => {
-			if (this._thisOwner) {
+		this._likes.forEach((item) => {
+			if (item._id === this._idOwner) {
 				this._likeButton.classList.add("card__icon-like_active");
 			}
 		});
