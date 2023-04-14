@@ -36,8 +36,7 @@ const userInform = new UserInfo({ name: profileName, about: profileAbout, avatar
 profileEditButton.addEventListener("click", () => {
 	popupClassEditProfiles.openPopup();
 	const { name, about } = userInform.getUserInfo();
-	popupProfileName.value = name;
-	popupProfileAbout.value = about;
+	popupClassEditProfiles.setInputValues({ name, about });
 	profileFormValid.resetValidation();
 });
 
