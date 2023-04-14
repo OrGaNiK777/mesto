@@ -5,8 +5,6 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Mesto</title>
-		<!-- <link rel="stylesheet" href="./pages/index.css" /> -->
-		<!-- <script defer type="module" src="../index.js"></script> -->
 	</head>
 	<body>
 		<div class="page">
@@ -17,7 +15,7 @@
 				<section class="profile">
 					<div class="profile__container">
 						<button class="profile__avatar-edit" type="button" aria-label="update avatar">
-							<img class="profile__avatar" src="_" alt="Аватар" />
+							<img class="profile__avatar" src="#" alt="Аватар" />
 						</button>
 
 						<div class="profile__info">
@@ -37,7 +35,7 @@
 				<div class="popup popup-profile">
 					<div class="popup__container">
 						<h2 class="popup__title">Редактировать профиль</h2>
-						<form class="popup__form" name="form" id="popupProfileForm" novalidate>
+						<form class="popup__form" name="profileForm" id="popupProfileForm" novalidate>
 							<button id="buttonClosePopupEditProfile" class="popup__button-close" type="button"></button>
 							<input class="popup__input popup__input_addEdit" id="popupProfileName" name="name" type="text" placeholder="Имя" required maxlength="40" minlength="2" />
 							<span class="popup__input-error popupProfileName-error">Вы пропустили это поле</span>
@@ -50,7 +48,7 @@
 				<div class="popup popup-add">
 					<div class="popup__container">
 						<h2 class="popup__title">Новое место</h2>
-						<form class="popup__form" name="form" id="popupNewCardForm" novalidate>
+						<form class="popup__form" name="cardForm" id="popupNewCardForm" novalidate>
 							<input class="popup__input popup__input_addEdit" id="popupInputTitle" name="name" type="text" placeholder="Название" required maxlength="30" minlength="2" />
 							<span class="popup__input-error popupInputTitle-error">Вы пропустили это поле</span>
 							<input class="popup__input popup__input_addEdit" id="popupInputLink" name="link" type="url" placeholder="Ссылка на страницу" required />
@@ -69,7 +67,7 @@
 				</div>
 				<div class="popup popup-delete">
 					<div class="popup__container">
-						<form class="popup__form" name="form" id="popupConfirmDelete" novalidate>
+						<form class="popup__form" name="confirmDeleteForm" id="popupConfirmDelete" novalidate>
 							<button id="buttonClosePopupDelete" class="popup__button-close" type="button"></button>
 							<h2 class="popup__title">Вы уверены?</h2>
 							<button class="popup__button-save popup__button-save_delete" id="submitDeleteCard" type="submit">Да!</button>
@@ -80,7 +78,7 @@
 					<div class="popup__container">
 						<button id="buttonClosePopupAvatar" class="popup__button-close" type="button"></button>
 						<h2 class="popup__title">Обновить аватар</h2>
-						<form class="popup__form" name="form" id="popupAvatarForm" novalidate>
+						<form class="popup__form" name="avatarForm" id="popupAvatarForm" novalidate>
 							<input class="popup__input popup__input_avatar" id="popupInputLinkAvatar" name="link" type="url" placeholder="Ссылка на страницу" required />
 							<span class="popup__input-error popupInputLinkAvatar-error">Введите адрес сайта</span>
 							<button class="popup__button-save" id="submitAvatar" type="submit">Сохранить</button>

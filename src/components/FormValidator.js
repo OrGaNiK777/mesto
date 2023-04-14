@@ -4,7 +4,7 @@ export default class FormValidator {
 		this._formElement = formElement;
 	}
 
-	_errorShow(inputElement, errorMessage) {
+	_showError(inputElement, errorMessage) {
 		// — показывает элемент ошибки;
 		// Находим элемент ошибки внутри самой функции
 		const errorForm = this._formElement.querySelector(`.${inputElement.id}-error`);
@@ -13,7 +13,7 @@ export default class FormValidator {
 		errorForm.textContent = errorMessage;
 	}
 
-	_errorHide(inputElement) {
+	_hideError(inputElement) {
 		// — скрывает элемент ошибки;
 		// Находим элемент ошибки
 		const errorForm = this._formElement.querySelector(`.${inputElement.id}-error`);
@@ -27,24 +27,20 @@ export default class FormValidator {
 		if (inputElement.validity.valid) {
 			// получает параметром форму, в которой
 			// находится проверяемое поле, и само это поле
-			this._errorHide(inputElement);
+			this._hideError(inputElement);
 		} else {
 			// получает параметром форму, в которой
 			// находится проверяемое поле, и само это поле
-			this._errorShow(inputElement, inputElement.validationMessage);
+			this._showError(inputElement, inputElement.validationMessage);
 		}
 	}
 
 	_setEventListeners() {
 		// Найдём все поля формы и сделаем из них массив
 
-		this._inputList = Array.from(
-			this._formElement.querySelectorAll(this._validSettings.inputSelector)
-		);
+		this._inputList = Array.from(this._formElement.querySelectorAll(this._validSettings.inputSelector));
 		// Найдём в текущей форме кнопку отправки
-		this._buttonElement = this._formElement.querySelector(
-			this._validSettings.submitButtonSelector
-		);
+		this._buttonElement = this._formElement.querySelector(this._validSettings.submitButtonSelector);
 		//чтобы проверить состояние кнопки в самом начале\
 		this.toggleButtonState();
 		this._inputList.forEach((inputElement) => {
@@ -60,7 +56,7 @@ export default class FormValidator {
 		return this._inputList.some((input) => {
 			return !input.validity.valid;
 		});
-	}
+	} //___________________________________________ У меня это уже сделано вроде?
 	toggleButtonState() {
 		// Если есть хотя бы один невалидный инпут
 		if (this._hasInvalid()) {
@@ -72,17 +68,16 @@ export default class FormValidator {
 			this._buttonElement.removeAttribute("disabled");
 			this._buttonElement.classList.remove(this._validSettings.inactiveButtonClass);
 		}
-		this._buttonElement.setAttribute.reset;
 	}
 
-	enableValid() {
+	enableValidation() {
 		this._setEventListeners();
 	}
 	resetValidation() {
 		this.toggleButtonState(); // управляем кнопкой
 
 		this._inputList.forEach((inputElement) => {
-			this._errorHide(inputElement); //очищаем ошибки
+			this._hideError(inputElement); //очищаем ошибки
 		});
 	}
 }
