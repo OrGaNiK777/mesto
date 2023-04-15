@@ -51,12 +51,14 @@ export default class FormValidator {
 			});
 		});
 	}
+
 	_hasInvalid() {
 		// проходим по этому массиву методом some
 		return this._inputList.some((input) => {
 			return !input.validity.valid;
 		});
 	} //___________________________________________ У меня это уже сделано вроде?
+
 	toggleButtonState() {
 		// Если есть хотя бы один невалидный инпут
 		if (this._hasInvalid()) {
@@ -73,6 +75,7 @@ export default class FormValidator {
 	enableValidation() {
 		this._setEventListeners();
 	}
+
 	resetValidation() {
 		this.toggleButtonState(); // управляем кнопкой
 

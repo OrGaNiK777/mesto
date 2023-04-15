@@ -9,8 +9,6 @@ import PopupDeleteCard from "../components/PopupDeleteCard.js";
 import UserInfo from "../components/UserInfo.js";
 import api from "../components/Api.js";
 
-const popupProfileName = document.querySelector("#popupProfileName"); //имя - попап изменить профиль
-const popupProfileAbout = document.querySelector("#popupProfileAbout"); //о - попап изменить профиль
 const popupProfileForm = document.forms["profileForm"];
 
 const profileName = document.querySelector(".profile__name");
@@ -53,7 +51,7 @@ const submitEdit = (inputs) => {
 	popupClassEditProfiles.loading("Сохранение...");
 	api.patchUserInfo(inputs)
 		.then((data) => {
-			userInform.setUserInfo({ name: data.name, about: data.about, avatar: data.avatar, id: data._id });
+			userInform.setUserInfo(data);
 			popupClassEditProfiles.closePopup();
 		})
 		.catch((error) => {
@@ -115,7 +113,7 @@ const submitAvatar = (inputs) => {
 	popupClassAvatar.loading("Сохранение...");
 	api.updateAvatar(inputs.link)
 		.then((data) => {
-			userInform.setUserInfo({ name: data.name, about: data.about, avatar: data.avatar, id: data._id });
+			userInform.setUserInfo(data);
 			popupClassAvatar.closePopup();
 		})
 		.catch((error) => {
@@ -192,7 +190,7 @@ function createCard(item, isOwner, idOwner) {
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
 	.then(([data, cardListData]) => {
-		userInform.setUserInfo({ name: data.name, about: data.about, avatar: data.avatar, id: data._id });
+		userInform.setUserInfo(data);
 		cardList.rendererCard(cardListData);
 	})
 	.catch((error) => {

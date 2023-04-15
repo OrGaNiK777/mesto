@@ -3,9 +3,10 @@ import Popup from "./Popup.js";
 export default class PopupDeleteCard extends Popup {
 	constructor(popup) {
 		super(popup);
+
+		this._form = this._popup.querySelector(".popup__form");
 		this._saveButton = this._form.querySelector(".popup__button-save");
 	}
-
 	openPopup({ handleSubmit }) {
 		super.openPopup();
 		this._handleSubmit = handleSubmit;
